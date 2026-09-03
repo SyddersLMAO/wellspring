@@ -84,10 +84,19 @@ public class Wellspring {
             event.accept(ModBlocks.SIFT_PLANKS_STAIRS);
             event.accept(ModBlocks.SIFT_PLANKS_SLAB);
             event.accept(ModBlocks.SIFT_LEAVES);
+            event.accept(ModBlocks.SIFT_PLANKS_FENCE);
+            event.accept(ModBlocks.SIFT_PLANKS_FENCE_GATE);
+            event.accept(ModBlocks.SIFT_PLANKS_DOOR);
+            event.accept(ModBlocks.SIFT_PLANKS_TRAPDOOR);
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.SIFT_SAPLING);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+            event.accept(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE);
+            event.accept(ModBlocks.SIFT_PLANKS_BUTTON);
         }
     }
 

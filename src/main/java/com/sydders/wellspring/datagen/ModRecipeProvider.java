@@ -40,7 +40,27 @@ public class ModRecipeProvider extends RecipeProvider {
 
         stairBuilder(ModBlocks.SIFT_PLANKS_STAIRS.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
-                .group("sift_planks").save(output);
-        slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_PLANKS_SLAB.get(), ModBlocks.SIFT_PLANKS.get());
+                .group("wooden_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_PLANKS_SLAB.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_slab").save(output);
+        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_pressure_plate").save(output);
+        buttonBuilder(ModBlocks.SIFT_PLANKS_BUTTON.get(), Ingredient.of(ModBlocks.SIFT_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_button").save(output);
+        fenceBuilder(ModBlocks.SIFT_PLANKS_FENCE.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_fence").save(output);
+        fenceGateBuilder(ModBlocks.SIFT_PLANKS_FENCE_GATE.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_fence_gate").save(output);
+        doorBuilder(ModBlocks.SIFT_PLANKS_DOOR.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_door").save(output);
+        trapdoorBuilder(ModBlocks.SIFT_PLANKS_TRAPDOOR.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_trapdoor").save(output);
     }
 }

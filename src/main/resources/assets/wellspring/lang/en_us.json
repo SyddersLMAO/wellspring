@@ -8,6 +8,12 @@
   "block.wellspring.sift_planks": "Sift Planks",
   "block.wellspring.sift_planks_stairs": "Sift Stairs",
   "block.wellspring.sift_planks_slab": "Sift Slab",
+  "block.wellspring.sift_planks_pressure_plate": "Sift Pressure Plate",
+  "block.wellspring.sift_planks_button": "Sift Button",
+  "block.wellspring.sift_planks_fence": "Sift Fence",
+  "block.wellspring.sift_planks_fence_gate": "Sift Fence Gate",
+  "block.wellspring.sift_planks_door": "Sift Door",
+  "block.wellspring.sift_planks_trapdoor": "Sift Trapdoor",
   "block.wellspring.sift_sapling": "Sift Sapling",
   "block.wellspring.potted_sift_sapling": "Potted Sift Sapling",
   "block.wellspring.sift_leaves": "Sift Leaves"

@@ -19,7 +19,33 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
+                .add(ModBlocks.SIFT_PLANKS_SLAB.get())
+                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.SIFT_PLANKS_STAIRS.get());
+
+        tag(BlockTags.SLABS)
                 .add(ModBlocks.SIFT_PLANKS_SLAB.get());
+
+        tag(BlockTags.PRESSURE_PLATES)
+                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get());
+
+        tag(BlockTags.BUTTONS)
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.SIFT_PLANKS_FENCE.get());
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.SIFT_PLANKS_FENCE_GATE.get());
+
+        tag(BlockTags.DOORS)
+                .add(ModBlocks.SIFT_PLANKS_DOOR.get());
+
+        tag(BlockTags.TRAPDOORS)
+                .add(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
 
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.SIFT_LEAVES.get());

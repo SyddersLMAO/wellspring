@@ -27,6 +27,12 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.family(ModBlocks.SIFT_PLANKS.get())
                 .stairs(ModBlocks.SIFT_PLANKS_STAIRS.get())
-                .slab(ModBlocks.SIFT_PLANKS_SLAB.get());
+                .slab(ModBlocks.SIFT_PLANKS_SLAB.get())
+                .pressurePlate(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
+                .button(ModBlocks.SIFT_PLANKS_BUTTON.get())
+                .fence(ModBlocks.SIFT_PLANKS_FENCE.get())
+                .fenceGate(ModBlocks.SIFT_PLANKS_FENCE_GATE.get())
+                .door(ModBlocks.SIFT_PLANKS_DOOR.get())
+                .trapdoor(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
     }
 }

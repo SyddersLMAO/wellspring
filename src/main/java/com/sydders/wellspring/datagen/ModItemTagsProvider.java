@@ -6,6 +6,7 @@ import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 

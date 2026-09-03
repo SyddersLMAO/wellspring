@@ -12,7 +12,9 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -88,8 +90,28 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SIFT_PLANKS_STAIRS = registerBlock("sift_planks_stairs",
             properties -> new StairBlock(ModBlocks.SIFT_PLANKS.get().defaultBlockState(),
                     properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
-public static final DeferredBlock<Block> SIFT_PLANKS_SLAB = registerBlock("sift_planks_slab",
+    public static final DeferredBlock<Block> SIFT_PLANKS_SLAB = registerBlock("sift_planks_slab",
             properties -> new SlabBlock(properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> SIFT_PLANKS_PRESSURE_PLATE = registerBlock("sift_planks_pressure_plate",
+            properties -> new PressurePlateBlock(BlockSetType.WARPED,
+                    properties.mapColor(MapColor.COLOR_GREEN).forceSolidOn()
+                            .noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> SIFT_PLANKS_BUTTON = registerBlock("sift_planks_button",
+            properties -> new ButtonBlock(BlockSetType.WARPED, 20,
+                    properties.noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SIFT_PLANKS_FENCE = registerBlock("sift_planks_fence",
+            properties -> new FenceBlock(properties.strength(2F).sound(SoundType.NETHER_WOOD)));
+    public static final DeferredBlock<Block> SIFT_PLANKS_FENCE_GATE = registerBlock("sift_planks_fence_gate",
+            properties -> new FenceGateBlock(WoodType.WARPED, properties.strength(2F).sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> SIFT_PLANKS_DOOR = registerBlock("sift_planks_door",
+            properties -> new DoorBlock(BlockSetType.WARPED,
+                    properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
+    public static final DeferredBlock<Block> SIFT_PLANKS_TRAPDOOR = registerBlock("sift_planks_trapdoor",
+            properties -> new TrapDoorBlock(BlockSetType.WARPED,
+                    properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);

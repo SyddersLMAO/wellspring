@@ -27,6 +27,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.SIFT_PLANKS_STAIRS.get());
         add(ModBlocks.SIFT_PLANKS_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.SIFT_PLANKS_BUTTON.get());
+        dropSelf(ModBlocks.SIFT_PLANKS_FENCE.get());
+        dropSelf(ModBlocks.SIFT_PLANKS_FENCE_GATE.get());
+        dropSelf(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
+
+        add(ModBlocks.SIFT_PLANKS_DOOR.get(), this::createDoorTable);
 
         add(ModBlocks.SIFT_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.SIFT_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.POTTED_SIFT_SAPLING.get(), createPotFlowerItemTable((ModBlocks.SIFT_SAPLING)));
