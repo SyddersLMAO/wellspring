@@ -21,8 +21,12 @@ public class ModModelProvider extends ModelProvider {
         //blocks
         blockModels.woodProvider(ModBlocks.SIFT_LOG.get()).logWithHorizontal(ModBlocks.SIFT_LOG.get()).wood(ModBlocks.SIFT_WOOD.get());
         blockModels.woodProvider(ModBlocks.STRIPPED_SIFT_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_SIFT_LOG.get()).wood(ModBlocks.STRIPPED_SIFT_WOOD.get());
-
-        blockModels.createTrivialCube(ModBlocks.SIFT_PLANKS.get());
         blockModels.createTrivialCube(ModBlocks.SIFT_LEAVES.get());
+
+        blockModels.createPlantWithDefaultItem(ModBlocks.SIFT_SAPLING.get(), ModBlocks.POTTED_SIFT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
+        blockModels.family(ModBlocks.SIFT_PLANKS.get())
+                .stairs(ModBlocks.SIFT_PLANKS_STAIRS.get())
+                .slab(ModBlocks.SIFT_PLANKS_SLAB.get());
     }
 }

@@ -6,5 +6,9 @@
   "block.wellspring.sift_wood": "Sift Wood",
   "block.wellspring.stripped_sift_wood": "Stripped Sift Wood",
   "block.wellspring.sift_planks": "Sift Planks",
+  "block.wellspring.sift_planks_stairs": "Sift Stairs",
+  "block.wellspring.sift_planks_slab": "Sift Slab",
+  "block.wellspring.sift_sapling": "Sift Sapling",
+  "block.wellspring.potted_sift_sapling": "Potted Sift Sapling",
   "block.wellspring.sift_leaves": "Sift Leaves"
 }

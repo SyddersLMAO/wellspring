@@ -17,6 +17,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
+                .add(ModBlocks.SIFT_PLANKS_SLAB.get());
+
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.SIFT_LEAVES.get());
         tag(BlockTags.PLANKS)
@@ -26,5 +30,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SIFT_WOOD.get())
                 .add(ModBlocks.STRIPPED_SIFT_LOG.get())
                 .add(ModBlocks.STRIPPED_SIFT_WOOD.get());
+        tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_SIFT_SAPLING.get());
     }
 }

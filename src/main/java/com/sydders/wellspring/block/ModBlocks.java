@@ -3,15 +3,13 @@ package com.sydders.wellspring.block;
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.custom.ModFlammableRotatedPillarBlock;
 import com.sydders.wellspring.item.ModItems;
+import com.sydders.wellspring.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -77,6 +75,21 @@ public class ModBlocks {
                     return 5;
                 }
             });
+
+    public static final DeferredBlock<Block> SIFT_SAPLING = registerBlock("sift_sapling",
+            properties -> new SaplingBlock(ModTreeGrowers.SIFT, properties.mapColor(MapColor.PLANT)
+                    .noCollision().randomTicks().instabreak().sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> POTTED_SIFT_SAPLING = BLOCKS.registerBlock("potted_sift_sapling",
+            properties -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), SIFT_SAPLING,
+                    properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> SIFT_PLANKS_STAIRS = registerBlock("sift_planks_stairs",
+            properties -> new StairBlock(ModBlocks.SIFT_PLANKS.get().defaultBlockState(),
+                    properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
+public static final DeferredBlock<Block> SIFT_PLANKS_SLAB = registerBlock("sift_planks_slab",
+            properties -> new SlabBlock(properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);

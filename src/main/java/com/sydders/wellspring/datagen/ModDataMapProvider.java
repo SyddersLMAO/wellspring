@@ -16,7 +16,7 @@ public class ModDataMapProvider extends DataMapProvider {
      * @param packOutput     the output location
      * @param lookupProvider a {@linkplain CompletableFuture} supplying the registries
      */
-    protected ModDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public ModDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }
 

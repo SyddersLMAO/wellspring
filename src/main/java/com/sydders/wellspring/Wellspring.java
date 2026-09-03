@@ -81,7 +81,13 @@ public class Wellspring {
             event.accept(ModBlocks.STRIPPED_SIFT_LOG);
             event.accept(ModBlocks.STRIPPED_SIFT_WOOD);
             event.accept(ModBlocks.SIFT_PLANKS);
+            event.accept(ModBlocks.SIFT_PLANKS_STAIRS);
+            event.accept(ModBlocks.SIFT_PLANKS_SLAB);
             event.accept(ModBlocks.SIFT_LEAVES);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.SIFT_SAPLING);
         }
     }
 
