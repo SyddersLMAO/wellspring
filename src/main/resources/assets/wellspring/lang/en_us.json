@@ -1,0 +1,13 @@
+{
+  "itemGroup.wellspring": "Example Mod Tab",
+  "block.wellspring.example_block": "Example Block",
+  "item.wellspring.example_item": "Example Item",
+
+  "wellspring.configuration.title": "Wellspring Configs",
+  "wellspring.configuration.section.wellspring.common.toml": "Wellspring Configs",
+  "wellspring.configuration.section.wellspring.common.toml.title": "Wellspring Configs",
+  "wellspring.configuration.items": "Item List",
+  "wellspring.configuration.logDirtBlock": "Log Dirt Block",
+  "wellspring.configuration.magicNumberIntroduction": "Magic Number Text",
+  "wellspring.configuration.magicNumber": "Magic Number"
+}
