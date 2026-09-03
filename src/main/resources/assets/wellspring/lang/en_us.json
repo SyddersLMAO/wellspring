@@ -1,3 +1,10 @@
 {
-  "item.wellspring.ruby": "Ruby"
+  "item.wellspring.ruby": "Ruby",
+
+  "block.wellspring.sift_log": "Sift Logs",
+  "block.wellspring.stripped_sift_log": "Stripped Sift Logs",
+  "block.wellspring.sift_wood": "Sift Wood",
+  "block.wellspring.stripped_sift_wood": "Stripped Sift Wood",
+  "block.wellspring.sift_planks": "Sift Planks",
+  "block.wellspring.sift_leaves": "Sift Leaves"
 }

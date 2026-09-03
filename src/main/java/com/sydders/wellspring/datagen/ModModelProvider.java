@@ -1,6 +1,7 @@
 package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.Wellspring;
+import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -16,5 +17,12 @@ public class ModModelProvider extends ModelProvider {
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         itemModels.generateFlatItem(ModItems.RUBY.get(), ModelTemplates.FLAT_ITEM);
+
+        //blocks
+        blockModels.woodProvider(ModBlocks.SIFT_LOG.get()).logWithHorizontal(ModBlocks.SIFT_LOG.get()).wood(ModBlocks.SIFT_WOOD.get());
+        blockModels.woodProvider(ModBlocks.STRIPPED_SIFT_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_SIFT_LOG.get()).wood(ModBlocks.STRIPPED_SIFT_WOOD.get());
+
+        blockModels.createTrivialCube(ModBlocks.SIFT_PLANKS.get());
+        blockModels.createTrivialCube(ModBlocks.SIFT_LEAVES.get());
     }
 }

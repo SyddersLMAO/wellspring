@@ -74,6 +74,15 @@ public class Wellspring {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RUBY);
         }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.SIFT_LOG);
+            event.accept(ModBlocks.SIFT_WOOD);
+            event.accept(ModBlocks.STRIPPED_SIFT_LOG);
+            event.accept(ModBlocks.STRIPPED_SIFT_WOOD);
+            event.accept(ModBlocks.SIFT_PLANKS);
+            event.accept(ModBlocks.SIFT_LEAVES);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

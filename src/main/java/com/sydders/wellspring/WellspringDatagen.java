@@ -1,5 +1,6 @@
 package com.sydders.wellspring;
 
+import com.sydders.wellspring.datagen.ModBlockTagsProvider;
 import com.sydders.wellspring.datagen.ModModelProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -14,9 +15,12 @@ public class WellspringDatagen {
     public static void gatherClientData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
+        var lookupProvider = event.getLookupProvider();
 
         // Model provider
         generator.addProvider(true, new ModModelProvider(packOutput));
 
+        // Tags providers
+        generator.addProvider(true, new ModBlockTagsProvider(packOutput, lookupProvider));
     }
 }
