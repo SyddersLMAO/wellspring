@@ -4,6 +4,7 @@ import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.entity.ModEntities;
 import com.sydders.wellspring.entity.ModEntityAttributes;
 import com.sydders.wellspring.item.ModItems;
+import com.sydders.wellspring.sound.ModSounds;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -60,6 +61,9 @@ public class Wellspring {
         modEventBus.addListener(
                 ModEntityAttributes::registerAttributes
         );
+
+        // Register Sounds
+        ModSounds.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Wellspring) to respond directly to events.

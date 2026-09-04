@@ -1,5 +1,6 @@
 {
   "item.wellspring.ruby": "Ruby",
+  "item.wellspring.warden_key":  "Warden Key",
 
   "block.wellspring.red_sculk": "Red Sculk",
   "block.wellspring.sift_stone": "Sift Stone",
@@ -19,5 +20,7 @@
   "block.wellspring.sift_planks_trapdoor": "Sift Trapdoor",
   "block.wellspring.sift_sapling": "Sift Sapling",
   "block.wellspring.potted_sift_sapling": "Potted Sift Sapling",
-  "block.wellspring.sift_leaves": "Sift Leaves"
+  "block.wellspring.sift_leaves": "Sift Leaves",
+
+  "entity.wellspring.blub": "Blub"
 }

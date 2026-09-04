@@ -4,14 +4,16 @@ import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
 import com.sydders.wellspring.item.ModItems;
-import net.minecraft.core.Direction;
+import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 
@@ -53,6 +55,13 @@ public class ModModelProvider extends ModelProvider {
                         BlockModelGenerators.plainVariant(
                                 ModelLocationUtils.getModelLocation(ModBlocks.SIFT_GRASS_BLOCK.get())
                         )
+                )
+        );
+        itemModels.itemModelOutput.accept(
+                ModBlocks.SIFT_GRASS_BLOCK.get().asItem(),
+                ItemModelUtils.tintedModel(
+                        ModelLocationUtils.getModelLocation(ModBlocks.SIFT_GRASS_BLOCK.get()),
+                        new GrassColorSource(0.5F, 1.0F)
                 )
         );
 

@@ -34,5 +34,7 @@ public class WellspringDatagen {
         generator.addProvider(true, new ModItemTagsProvider(packOutput, lookupProvider));
 
         generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
+
+        generator.addProvider(true, new ModSoundProvider(packOutput));
     }
 }
