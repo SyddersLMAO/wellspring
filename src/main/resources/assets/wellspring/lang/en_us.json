@@ -1,6 +1,9 @@
 {
   "item.wellspring.ruby": "Ruby",
 
+  "block.wellspring.red_sculk": "Red Sculk",
+  "block.wellspring.sift_stone": "Sift Stone",
+  "block.wellspring.hardened_sift_stone": "Hardened Sift Stone",
   "block.wellspring.sift_log": "Sift Logs",
   "block.wellspring.stripped_sift_log": "Stripped Sift Logs",
   "block.wellspring.sift_wood": "Sift Wood",

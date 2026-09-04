@@ -1,6 +1,7 @@
 package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -28,12 +29,21 @@ public class ModRecipeProvider extends RecipeProvider {
 
         @Override
         public String getName() {
-            return "TutorialMod Recipes";
+            return "Wellspring Recipes";
         }
     }
 
     @Override
     protected void buildRecipes() {
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModBlocks.SIFT_STONE.get())
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
+                .group("hardened_sift_stone")
+                .save(output);
+
         woodFromLogs(ModBlocks.SIFT_WOOD.get(), ModBlocks.SIFT_LOG);
         woodFromLogs(ModBlocks.STRIPPED_SIFT_WOOD.get(), ModBlocks.STRIPPED_SIFT_LOG);
         planksFromLog(ModBlocks.SIFT_PLANKS, ModTags.Items.SIFT_LOGS, 4);

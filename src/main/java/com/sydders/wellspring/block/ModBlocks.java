@@ -2,6 +2,7 @@ package com.sydders.wellspring.block;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.custom.ModFlammableRotatedPillarBlock;
+import com.sydders.wellspring.block.custom.SiftPortalBlock;
 import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -26,6 +27,27 @@ import java.util.function.Function;
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Wellspring.MODID);
+
+    public static final DeferredBlock<Block> RED_SCULK = registerBlock("red_sculk",
+            properties -> new Block(properties.strength(1f)
+                    .sound(SoundType.SCULK).mapColor(MapColor.TERRACOTTA_RED)));
+    public static final DeferredBlock<Block> SIFT_STONE = registerBlock("sift_stone",
+            properties -> new Block(properties.strength(2f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_ORANGE)));
+    public static final DeferredBlock<Block> HARDENED_SIFT_STONE = registerBlock("hardened_sift_stone",
+            properties -> new Block(properties.strength(2.5f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
+    public static final DeferredBlock<Block> SIFT_GRASS_BLOCK = registerBlock("sift_grass_block",
+        properties -> new Block(properties.strength(1f)
+                .sound(SoundType.GRASS).mapColor(MapColor.TERRACOTTA_LIGHT_GREEN)));
+    public static final DeferredBlock<Block> SIFT_PORTAL = BLOCKS.registerBlock("sift_portal",
+            properties -> new SiftPortalBlock(properties.noCollision()
+                    .strength(-1.0F)
+                    .sound(SoundType.GLASS)
+                    .lightLevel(state -> 11)
+                    .noLootTable()
+                    .pushReaction(PushReaction.BLOCK)));
+
 
     public static final DeferredBlock<Block> SIFT_LOG = registerBlock("sift_log",
             properties -> new ModFlammableRotatedPillarBlock(

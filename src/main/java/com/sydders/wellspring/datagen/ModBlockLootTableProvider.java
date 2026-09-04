@@ -4,10 +4,9 @@ import com.sydders.wellspring.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 
 import java.util.Set;
 
@@ -18,6 +17,17 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        dropSelf(ModBlocks.RED_SCULK.get());
+        dropSelf(ModBlocks.SIFT_STONE.get());
+        dropSelf(ModBlocks.HARDENED_SIFT_STONE.get());
+
+        add(ModBlocks.SIFT_GRASS_BLOCK.get(),
+                createSilkTouchDispatchTable(
+                        ModBlocks.SIFT_GRASS_BLOCK.get(),
+                        LootItem.lootTableItem(ModBlocks.SIFT_STONE.get())
+                )
+        );
+
         dropSelf(ModBlocks.SIFT_LOG.get());
         dropSelf(ModBlocks.SIFT_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_SIFT_LOG.get());

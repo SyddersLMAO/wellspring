@@ -22,6 +22,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.PLANKS)
                 .add(ModBlocks.SIFT_PLANKS.asItem());
 
+        tag(ItemTags.STONE_TOOL_MATERIALS)
+                .add(ModBlocks.SIFT_STONE.asItem())
+                .add(ModBlocks.HARDENED_SIFT_STONE.asItem());
+
+        tag(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(ModBlocks.SIFT_STONE.asItem())
+                .add(ModBlocks.HARDENED_SIFT_STONE.asItem());
+
         tag(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.SIFT_LOG.asItem())
                 .add(ModBlocks.SIFT_WOOD.asItem())

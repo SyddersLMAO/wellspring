@@ -73,6 +73,7 @@ public class Wellspring {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RUBY);
+            event.accept(ModItems.WARDEN_KEY);
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {

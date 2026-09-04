@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
@@ -20,7 +19,14 @@ public class ModBiomeModifiers {
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_TREE_SIFT, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS)),
+                HolderSet.direct(
+                        biomes.getOrThrow(
+                                ResourceKey.create(
+                                        Registries.BIOME,
+                                        Identifier.fromNamespaceAndPath(Wellspring.MODID, "sift_forest")
+                                )
+                        )
+                ),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SIFT_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }

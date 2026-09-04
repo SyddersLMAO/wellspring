@@ -2,7 +2,6 @@ package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
-import com.sydders.wellspring.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -22,6 +21,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SIFT_PLANKS_SLAB.get())
                 .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
                 .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.SIFT_STONE.get())
+                .add(ModBlocks.HARDENED_SIFT_STONE.get())
+                .add(ModBlocks.SIFT_GRASS_BLOCK.get());
+
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.RED_SCULK.get());
+
+        tag(BlockTags.DIRT)
+                .add(ModBlocks.SIFT_GRASS_BLOCK.get());
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.SIFT_PLANKS_STAIRS.get());
