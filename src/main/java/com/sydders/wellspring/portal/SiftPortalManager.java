@@ -1,18 +1,24 @@
 package com.sydders.wellspring.portal;
 
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.block.custom.SiftPortalBlock;
+import com.sydders.wellspring.worldgen.ModDimensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.BlockUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+
+import java.util.Optional;
 
 public final class SiftPortalManager {
 
@@ -25,7 +31,111 @@ public final class SiftPortalManager {
     private SiftPortalManager() {
     }
 
-    public static BlockPos createDestinationPortal(
+    public static boolean activate(
+            ServerLevel level,
+            BlockPos clickedPos
+    ) {
+        return SiftPortalShape.find(level, clickedPos)
+                .map(shape -> {
+                    activate(level, shape);
+                    return true;
+                })
+                .orElse(false);
+    }
+
+    public static Optional<PortalEndpoint> findOrCreateDestination(
+            ServerLevel level,
+            BlockPos portalPos
+    ) {
+        SiftPortalSavedData savedData = SiftPortalSavedData.get(level.getServer());
+        Optional<PortalEndpoint> destination = savedData.findDestination(
+                level.dimension(),
+                portalPos
+        );
+
+        if (destination.filter(endpoint -> isUsableDestination(level, endpoint)).isPresent()) {
+            return destination;
+        }
+
+        if (level.dimension().equals(ModDimensions.SIFT)) {
+            return Optional.empty();
+        }
+
+        destination.ifPresent(endpoint -> savedData.removeLinkNear(
+                level.dimension(),
+                portalPos
+        ));
+
+        return SiftPortalShape.find(level, portalPos)
+                .flatMap(shape -> activate(level, shape));
+    }
+
+    private static Optional<PortalEndpoint> activate(
+            ServerLevel level,
+            SiftPortalShape shape
+    ) {
+        shape.createPortal(level);
+
+        if (level.dimension().equals(ModDimensions.SIFT)) {
+            return Optional.empty();
+        }
+
+        ServerLevel siftLevel = level.getServer().getLevel(ModDimensions.SIFT);
+
+        if (siftLevel == null) {
+            return Optional.empty();
+        }
+
+        PortalEndpoint source = new PortalEndpoint(
+                level.dimension(),
+                shape.portalCenter()
+        );
+
+        SiftPortalSavedData savedData = SiftPortalSavedData.get(level.getServer());
+        Optional<PortalEndpoint> existing = savedData.findDestination(
+                source.dimension(),
+                source.position()
+        );
+
+        if (existing.filter(endpoint -> isUsableDestination(level, endpoint)).isPresent()) {
+            return existing;
+        }
+
+        existing.ifPresent(endpoint -> savedData.removeLinkNear(
+                source.dimension(),
+                source.position()
+        ));
+
+        PortalEndpoint destination = new PortalEndpoint(
+                siftLevel.dimension(),
+                placeDestinationPortal(
+                        siftLevel,
+                        source.position(),
+                        shape.structureRotation()
+                )
+        );
+
+        savedData.addLinkIfAbsent(source, destination);
+
+        return Optional.of(destination);
+    }
+
+    private static boolean isUsableDestination(
+            ServerLevel sourceLevel,
+            PortalEndpoint endpoint
+    ) {
+        ServerLevel destinationLevel = sourceLevel.getServer()
+                .getLevel(endpoint.dimension());
+
+        if (destinationLevel == null) {
+            return false;
+        }
+
+        return !endpoint.dimension().equals(ModDimensions.SIFT)
+                || endpoint.position().getY() > destinationLevel.getMinY() + 2;
+    }
+
+    private static BlockPos placeDestinationPortal(
             ServerLevel siftLevel,
             BlockPos sourcePortalPos,
             Rotation rotation
@@ -108,17 +218,33 @@ public final class SiftPortalManager {
             ServerLevel level,
             BoundingBox box
     ) {
+        BlockPos portalPos = findFirstPortalBlock(level, box)
+                .orElseThrow(() ->
+                        new IllegalStateException(
+                                "The Sift gateway structure contains no SIFT_PORTAL blocks"
+                        )
+                );
 
-        int minX = Integer.MAX_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int minZ = Integer.MAX_VALUE;
+        Direction.Axis axis = level.getBlockState(portalPos)
+                .getValue(SiftPortalBlock.AXIS);
+        BlockUtil.FoundRectangle portal = BlockUtil.getLargestRectangleAround(
+                portalPos,
+                axis,
+                SiftPortalShape.PORTAL_WIDTH,
+                Direction.Axis.Y,
+                SiftPortalShape.PORTAL_HEIGHT,
+                pos -> level.getBlockState(pos).is(ModBlocks.SIFT_PORTAL.get())
+        );
 
-        int maxX = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
-        int maxZ = Integer.MIN_VALUE;
+        return portal.minCorner
+                .relative(axis, portal.axis1Size / 2)
+                .above(1);
+    }
 
-        boolean found = false;
-
+    private static Optional<BlockPos> findFirstPortalBlock(
+            ServerLevel level,
+            BoundingBox box
+    ) {
         for (BlockPos pos : BlockPos.betweenClosed(
                 new BlockPos(
                         box.minX(),
@@ -131,33 +257,13 @@ public final class SiftPortalManager {
                         box.maxZ()
                 )
         )) {
+            BlockState state = level.getBlockState(pos);
 
-            if (!level.getBlockState(pos)
-                    .is(ModBlocks.SIFT_PORTAL.get())) {
-                continue;
+            if (state.is(ModBlocks.SIFT_PORTAL.get())) {
+                return Optional.of(pos.immutable());
             }
-
-            found = true;
-
-            minX = Math.min(minX, pos.getX());
-            minY = Math.min(minY, pos.getY());
-            minZ = Math.min(minZ, pos.getZ());
-
-            maxX = Math.max(maxX, pos.getX());
-            maxY = Math.max(maxY, pos.getY());
-            maxZ = Math.max(maxZ, pos.getZ());
         }
 
-        if (!found) {
-            throw new IllegalStateException(
-                    "The Sift gateway structure contains no SIFT_PORTAL blocks"
-            );
-        }
-
-        return new BlockPos(
-                (minX + maxX) / 2,
-                minY + 1,
-                (minZ + maxZ) / 2
-        );
+        return Optional.empty();
     }
 }

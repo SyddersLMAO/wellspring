@@ -1,7 +1,7 @@
 package com.sydders.wellspring.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import com.sydders.wellspring.portal.SiftPortalShape;
+import com.sydders.wellspring.portal.SiftPortalManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -160,7 +161,7 @@ public class SiftPortalBlock extends Block implements Portal {
             BlockPos portalEntryPos
     ) {
 
-        var endpoint = SiftPortalShape.findOrCreateDestination(
+        var endpoint = SiftPortalManager.findOrCreateDestination(
                 currentLevel,
                 portalEntryPos
         );
@@ -176,12 +177,17 @@ public class SiftPortalBlock extends Block implements Portal {
             return null;
         }
 
-        BlockPos target = endpoint.get().position();
+        Vec3 target = PortalShape.findCollisionFreePosition(
+                Vec3.atBottomCenterOf(endpoint.get().position()),
+                destination,
+                entity,
+                entity.getDimensions(entity.getPose())
+        );
 
         return new TeleportTransition(
                 destination,
-                Vec3.atBottomCenterOf(target).add(0, 1, 0),
-                entity.getDeltaMovement(),
+                target,
+                Vec3.ZERO,
                 entity.getYRot(),
                 entity.getXRot(),
                 TeleportTransition.PLAY_PORTAL_SOUND

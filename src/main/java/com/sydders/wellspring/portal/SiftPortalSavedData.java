@@ -66,30 +66,16 @@ public class SiftPortalSavedData extends SavedData {
                 .computeIfAbsent(TYPE);
     }
 
-    public void addLink(
-            PortalEndpoint first,
-            PortalEndpoint second
-    ) {
-        links.add(new PortalLink(first, second));
-        setDirty();
-    }
-
     public void addLinkIfAbsent(
             PortalEndpoint first,
             PortalEndpoint second
     ) {
-        for (PortalLink link : links) {
-            boolean sameOrder = link.first().equals(first)
-                    && link.second().equals(second);
-            boolean reverseOrder = link.first().equals(second)
-                    && link.second().equals(first);
-
-            if (sameOrder || reverseOrder) {
-                return;
-            }
+        if (links.stream().anyMatch(link -> link.connects(first, second))) {
+            return;
         }
 
-        addLink(first, second);
+        links.add(new PortalLink(first, second));
+        setDirty();
     }
 
     public Optional<PortalEndpoint> findDestination(
@@ -97,58 +83,25 @@ public class SiftPortalSavedData extends SavedData {
             net.minecraft.core.BlockPos portalBlock
     ) {
 
-        for (PortalLink link : links) {
-
-            if (matches(
-                    link.first(),
-                    dimension,
-                    portalBlock
-            )) {
-                return Optional.of(link.second());
-            }
-
-            if (matches(
-                    link.second(),
-                    dimension,
-                    portalBlock
-            )) {
-                return Optional.of(link.first());
-            }
-        }
-
-        return Optional.empty();
+        return links.stream()
+                .map(link -> link.destinationFrom(dimension, portalBlock))
+                .flatMap(Optional::stream)
+                .findFirst();
     }
 
     public boolean removeLinkNear(
             ResourceKey<Level> dimension,
             net.minecraft.core.BlockPos portalBlock
     ) {
-        boolean removed = links.removeIf(link ->
-                matches(link.first(), dimension, portalBlock)
-                        || matches(link.second(), dimension, portalBlock)
-        );
+        boolean removed = links.removeIf(link -> link.contains(
+                dimension,
+                portalBlock
+        ));
 
         if (removed) {
             setDirty();
         }
 
         return removed;
-    }
-
-    private boolean matches(
-            PortalEndpoint endpoint,
-            ResourceKey<Level> dimension,
-            net.minecraft.core.BlockPos pos
-    ) {
-
-        if (!endpoint.dimension().equals(dimension)) {
-            return false;
-        }
-
-        int dx = endpoint.position().getX() - pos.getX();
-        int dy = endpoint.position().getY() - pos.getY();
-        int dz = endpoint.position().getZ() - pos.getZ();
-
-        return dx * dx + dy * dy + dz * dz <= 14 * 14;
     }
 }

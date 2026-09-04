@@ -2,7 +2,6 @@ package com.sydders.wellspring.portal;
 
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
-import com.sydders.wellspring.worldgen.ModDimensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -32,9 +31,7 @@ public record SiftPortalShape(
                 Direction.Axis.Z
         }) {
 
-            Direction right = axis == Direction.Axis.X
-                    ? Direction.EAST
-                    : Direction.SOUTH;
+            Direction right = right(axis);
 
             for (int x = 0; x < FRAME_WIDTH; x++) {
                 for (int y = 0; y < FRAME_HEIGHT; y++) {
@@ -56,76 +53,6 @@ public record SiftPortalShape(
         }
 
         return Optional.empty();
-    }
-
-    public static boolean trySpawnPortal(
-            ServerLevel level,
-            BlockPos clickedPos
-    ) {
-        Optional<SiftPortalShape> shape = find(level, clickedPos);
-
-        if (shape.isEmpty()) {
-            return false;
-        }
-
-        shape.get().activate(level);
-        return true;
-    }
-
-    public static Optional<PortalEndpoint> findOrCreateDestination(
-            ServerLevel level,
-            BlockPos portalPos
-    ) {
-        SiftPortalSavedData savedData = SiftPortalSavedData.get(level.getServer());
-        Optional<PortalEndpoint> destination = savedData.findDestination(
-                level.dimension(),
-                portalPos
-        );
-
-        if (destination.isPresent()
-                && isUsableDestination(level, destination.get())) {
-            return destination;
-        }
-
-        if (destination.isPresent()) {
-            savedData.removeLinkNear(
-                    level.dimension(),
-                    portalPos
-            );
-        } else if (level.dimension().equals(ModDimensions.SIFT)) {
-            return destination;
-        }
-
-        Optional<SiftPortalShape> shape = find(level, portalPos);
-
-        if (shape.isEmpty()) {
-            return Optional.empty();
-        }
-
-        shape.get().activate(level);
-
-        return savedData.findDestination(
-                level.dimension(),
-                portalPos
-        );
-    }
-
-    private static boolean isUsableDestination(
-            ServerLevel sourceLevel,
-            PortalEndpoint endpoint
-    ) {
-        ServerLevel destinationLevel = sourceLevel.getServer()
-                .getLevel(endpoint.dimension());
-
-        if (destinationLevel == null) {
-            return false;
-        }
-
-        if (!endpoint.dimension().equals(ModDimensions.SIFT)) {
-            return true;
-        }
-
-        return endpoint.position().getY() > destinationLevel.getMinY() + 2;
     }
 
     private static boolean isValid(
@@ -168,85 +95,35 @@ public record SiftPortalShape(
 
     public void createPortal(ServerLevel level) {
 
-        Direction right = axis == Direction.Axis.X
-                ? Direction.EAST
-                : Direction.SOUTH;
-
         var portalState = ModBlocks.SIFT_PORTAL.get()
                 .defaultBlockState()
                 .setValue(SiftPortalBlock.AXIS, axis);
 
-        for (int x = 1; x < FRAME_WIDTH - 1; x++) {
-            for (int y = 1; y < FRAME_HEIGHT - 1; y++) {
-
-                BlockPos pos = bottomLeft
-                        .relative(right, x)
-                        .above(y);
-
-                level.setBlock(
-                        pos,
-                        portalState,
-                        3
-                );
-            }
-        }
-    }
-
-    public void activate(ServerLevel level) {
-        createPortal(level);
-
-        if (level.dimension().equals(ModDimensions.SIFT)) {
-            return;
-        }
-
-        ServerLevel siftLevel = level.getServer().getLevel(ModDimensions.SIFT);
-
-        if (siftLevel == null) {
-            return;
-        }
-
-        PortalEndpoint source = new PortalEndpoint(
-                level.dimension(),
-                portalCenter()
-        );
-
-        SiftPortalSavedData savedData = SiftPortalSavedData.get(level.getServer());
-
-        if (savedData.findDestination(
-                source.dimension(),
-                source.position()
-        ).isPresent()) {
-            return;
-        }
-
-        BlockPos destinationPortal = SiftPortalManager.createDestinationPortal(
-                siftLevel,
-                source.position(),
-                structureRotation()
-        );
-
-        savedData.addLinkIfAbsent(
-                source,
-                new PortalEndpoint(
-                        siftLevel.dimension(),
-                        destinationPortal
-                )
-        );
+        BlockPos.betweenClosed(
+                bottomLeft.relative(right(), 1).above(),
+                bottomLeft.relative(right(), PORTAL_WIDTH).above(PORTAL_HEIGHT)
+        ).forEach(pos -> level.setBlock(pos, portalState, 3));
     }
 
     public BlockPos portalCenter() {
-        Direction right = axis == Direction.Axis.X
-                ? Direction.EAST
-                : Direction.SOUTH;
-
         return bottomLeft
-                .relative(right, FRAME_WIDTH / 2)
+                .relative(right(), FRAME_WIDTH / 2)
                 .above(PORTAL_HEIGHT / 2);
     }
 
-    private Rotation structureRotation() {
+    Rotation structureRotation() {
         return axis == Direction.Axis.X
                 ? Rotation.CLOCKWISE_90
                 : Rotation.NONE;
+    }
+
+    private Direction right() {
+        return right(axis);
+    }
+
+    private static Direction right(Direction.Axis axis) {
+        return axis == Direction.Axis.X
+                ? Direction.EAST
+                : Direction.SOUTH;
     }
 }

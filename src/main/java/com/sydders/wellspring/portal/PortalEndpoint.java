@@ -12,6 +12,8 @@ public record PortalEndpoint(
         BlockPos position
 ) {
 
+    private static final int MATCH_DISTANCE = 14;
+
     public static final Codec<PortalEndpoint> CODEC =
             RecordCodecBuilder.create(instance ->
                     instance.group(
@@ -27,4 +29,12 @@ public record PortalEndpoint(
                             PortalEndpoint::new
                     )
             );
+
+    public boolean matches(
+            ResourceKey<Level> otherDimension,
+            BlockPos otherPosition
+    ) {
+        return dimension.equals(otherDimension)
+                && position.distSqr(otherPosition) <= MATCH_DISTANCE * MATCH_DISTANCE;
+    }
 }
