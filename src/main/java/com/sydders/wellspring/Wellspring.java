@@ -1,6 +1,8 @@
 package com.sydders.wellspring;
 
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.entity.ModEntities;
+import com.sydders.wellspring.entity.ModEntityAttributes;
 import com.sydders.wellspring.item.ModItems;
 import org.slf4j.Logger;
 
@@ -52,6 +54,12 @@ public class Wellspring {
 
         // Register Blocks
         ModBlocks.register(modEventBus);
+
+        // Register Entities
+        ModEntities.ENTITY_TYPES.register(modEventBus);
+        modEventBus.addListener(
+                ModEntityAttributes::registerAttributes
+        );
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Wellspring) to respond directly to events.

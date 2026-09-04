@@ -1,6 +1,9 @@
 package com.sydders.wellspring;
 
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.entity.ModEntities;
+import com.sydders.wellspring.entity.client.BlubModel;
+import com.sydders.wellspring.entity.client.BlubRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -14,6 +17,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -52,6 +56,26 @@ public class WellspringClient {
                 VanillaGuiLayers.CAMERA_OVERLAYS,
                 SIFT_PORTAL_OVERLAY_LAYER,
                 WellspringClient::renderSiftPortalOverlay
+        );
+    }
+
+    @SubscribeEvent
+    static void registerEntityLayers(
+            EntityRenderersEvent.RegisterLayerDefinitions event
+    ) {
+        event.registerLayerDefinition(
+                BlubModel.LAYER_LOCATION,
+                BlubModel::createBodyLayer
+        );
+    }
+
+    @SubscribeEvent
+    static void registerEntityRenderers(
+            EntityRenderersEvent.RegisterRenderers event
+    ) {
+        event.registerEntityRenderer(
+                ModEntities.BLUB.get(),
+                BlubRenderer::new
         );
     }
 
