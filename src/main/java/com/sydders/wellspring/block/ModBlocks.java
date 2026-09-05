@@ -135,6 +135,17 @@ public class ModBlocks {
             properties -> new TrapDoorBlock(BlockSetType.WARPED,
                     properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
 
+    public static final DeferredBlock<Block> BAZULIUM_ORE = registerBlock("bazulium_ore",
+            properties -> new Block(properties.strength(3f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_ORANGE)));
+    public static final DeferredBlock<Block> HARDENED_BAZULIUM_ORE = registerBlock("hardened_bazulium_ore",
+            properties -> new Block(properties.strength(3.5f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
+    public static final DeferredBlock<Block> BAZULIUM_BLOCK = registerBlock("bazulium_block",
+        properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops()
+                .sound(SoundType.METAL).mapColor(MapColor.TERRACOTTA_PINK)));
+
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
         registerBlockItem(name, toReturn);

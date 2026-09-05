@@ -85,7 +85,10 @@ public class Wellspring {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RUBY);
-            event.accept(ModItems.WARDEN_KEY);
+
+            event.accept(ModItems.RAW_BAZULIUM);
+            event.accept(ModItems.BAZULIUM_INGOT);
+            event.accept(ModItems.BAZULIUM_NUGGET);
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -101,15 +104,38 @@ public class Wellspring {
             event.accept(ModBlocks.SIFT_PLANKS_FENCE_GATE);
             event.accept(ModBlocks.SIFT_PLANKS_DOOR);
             event.accept(ModBlocks.SIFT_PLANKS_TRAPDOOR);
+            event.accept(ModBlocks.BAZULIUM_ORE);
+            event.accept(ModBlocks.HARDENED_BAZULIUM_ORE);
+            event.accept(ModBlocks.BAZULIUM_BLOCK);
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.SIFT_SAPLING);
+            event.accept(ModBlocks.BAZULIUM_ORE);
+            event.accept(ModBlocks.HARDENED_BAZULIUM_ORE);
         }
 
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE);
             event.accept(ModBlocks.SIFT_PLANKS_BUTTON);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.WARDEN_KEY);
+            event.accept(ModItems.BAZULIUM_PICKAXE);
+            event.accept(ModItems.BAZULIUM_AXE);
+            event.accept(ModItems.BAZULIUM_SHOVEL);
+            event.accept(ModItems.BAZULIUM_HOE);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.BAZULIUM_SWORD);
+            event.accept(ModItems.BAZULIUM_SPEAR);
+            event.accept(ModItems.BAZULIUM_AXE);
+            event.accept(ModItems.BAZULIUM_HELMET);
+            event.accept(ModItems.BAZULIUM_CHESTPLATE);
+            event.accept(ModItems.BAZULIUM_LEGGINGS);
+            event.accept(ModItems.BAZULIUM_BOOTS);
         }
     }
 

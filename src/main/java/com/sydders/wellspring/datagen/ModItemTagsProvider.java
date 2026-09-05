@@ -41,5 +41,20 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.SIFT_WOOD.asItem())
                 .add(ModBlocks.STRIPPED_SIFT_LOG.asItem())
                 .add(ModBlocks.STRIPPED_SIFT_WOOD.asItem());
+
+        tag(ModTags.Items.BAZULIUM_REPAIRABLE)
+                .add(ModItems.BAZULIUM_INGOT.get());
+
+        tag(ItemTags.SWORDS).add(ModItems.BAZULIUM_SWORD.get());
+        tag(ItemTags.PICKAXES).add(ModItems.BAZULIUM_PICKAXE.get());
+        tag(ItemTags.SHOVELS).add(ModItems.BAZULIUM_SHOVEL.get());
+        tag(ItemTags.AXES).add(ModItems.BAZULIUM_AXE.get());
+        tag(ItemTags.HOES).add(ModItems.BAZULIUM_HOE.get());
+        tag(ItemTags.SPEARS).add(ModItems.BAZULIUM_SPEAR.get());
+
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.BAZULIUM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.BAZULIUM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(ModItems.BAZULIUM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.BAZULIUM_BOOTS.get());
     }
 }

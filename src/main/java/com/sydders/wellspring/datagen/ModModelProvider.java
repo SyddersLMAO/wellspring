@@ -3,6 +3,7 @@ package com.sydders.wellspring.datagen;
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
+import com.sydders.wellspring.item.ModArmorMaterials;
 import com.sydders.wellspring.item.ModItems;
 import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -26,6 +27,22 @@ public class ModModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         itemModels.generateFlatItem(ModItems.RUBY.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.WARDEN_KEY.get(), ModelTemplates.FLAT_ITEM);
+
+        itemModels.generateFlatItem(ModItems.RAW_BAZULIUM.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+
+        itemModels.generateFlatItem(ModItems.BAZULIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.BAZULIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateSpear(ModItems.BAZULIUM_SPEAR.get());
+
+        itemModels.generateTrimmableItem(ModItems.BAZULIUM_HELMET.get(), ModArmorMaterials.BAZULIUM_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(ModItems.BAZULIUM_CHESTPLATE.get(), ModArmorMaterials.BAZULIUM_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModels.generateTrimmableItem(ModItems.BAZULIUM_LEGGINGS.get(), ModArmorMaterials.BAZULIUM_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModels.generateTrimmableItem(ModItems.BAZULIUM_BOOTS.get(), ModArmorMaterials.BAZULIUM_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         //blocks
         blockModels.createTrivialCube(ModBlocks.RED_SCULK.get());
@@ -80,5 +97,9 @@ public class ModModelProvider extends ModelProvider {
                 .fenceGate(ModBlocks.SIFT_PLANKS_FENCE_GATE.get())
                 .door(ModBlocks.SIFT_PLANKS_DOOR.get())
                 .trapdoor(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
+
+        blockModels.createTrivialCube(ModBlocks.BAZULIUM_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.HARDENED_BAZULIUM_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.BAZULIUM_BLOCK.get());
     }
 }

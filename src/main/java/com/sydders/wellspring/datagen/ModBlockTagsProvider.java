@@ -2,6 +2,7 @@ package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -25,10 +26,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.SIFT_STONE.get())
                 .add(ModBlocks.HARDENED_SIFT_STONE.get())
-                .add(ModBlocks.SIFT_GRASS_BLOCK.get());
+                .add(ModBlocks.SIFT_GRASS_BLOCK.get())
+                .add(ModBlocks.BAZULIUM_ORE.get())
+                .add(ModBlocks.HARDENED_BAZULIUM_ORE.get());
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.RED_SCULK.get());
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.BAZULIUM_ORE.get())
+                .add(ModBlocks.HARDENED_BAZULIUM_ORE.get());
 
         tag(BlockTags.DIRT)
                 .add(ModBlocks.SIFT_GRASS_BLOCK.get());
@@ -68,5 +75,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_SIFT_WOOD.get());
         tag(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_SIFT_SAPLING.get());
+
+        tag(ModTags.Blocks.NEEDS_BAZULIUM_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_BAZULIUM_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .remove(ModTags.Blocks.NEEDS_BAZULIUM_TOOL);
     }
 }

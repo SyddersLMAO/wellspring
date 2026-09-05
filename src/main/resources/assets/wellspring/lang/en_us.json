@@ -1,6 +1,19 @@
 {
   "item.wellspring.ruby": "Ruby",
   "item.wellspring.warden_key":  "Warden Key",
+  "item.wellspring.raw_bazulium":  "Raw Bazulium",
+  "item.wellspring.bazulium_ingot":  "Bazulium Ingot",
+  "item.wellspring.bazulium_nugget":  "Bazulium Nugget",
+  "item.wellspring.bazulium_sword":  "Bazulium Sword",
+  "item.wellspring.bazulium_pickaxe":  "Bazulium Pickaxe",
+  "item.wellspring.bazulium_shovel":  "Bazulium Shovel",
+  "item.wellspring.bazulium_axe":  "Bazulium Axe",
+  "item.wellspring.bazulium_hoe":  "Bazulium Hoe",
+  "item.wellspring.bazulium_spear":  "Bazulium Spear",
+  "item.wellspring.bazulium_helmet":  "Bazulium Helmet",
+  "item.wellspring.bazulium_chestplate":  "Bazulium Chestplate",
+  "item.wellspring.bazulium_leggings":  "Bazulium Leggings",
+  "item.wellspring.bazulium_boots":  "Bazulium Boots",
 
   "block.wellspring.red_sculk": "Red Sculk",
   "block.wellspring.sift_stone": "Sift Stone",
@@ -21,6 +34,9 @@
   "block.wellspring.sift_sapling": "Sift Sapling",
   "block.wellspring.potted_sift_sapling": "Potted Sift Sapling",
   "block.wellspring.sift_leaves": "Sift Leaves",
+  "block.wellspring.bazulium_ore": "Bazulium Ore",
+  "block.wellspring.hardened_bazulium_ore": "Hardened Bazulium Ore",
+  "block.wellspring.bazulium_block": "Bazulium Block",
 
   "entity.wellspring.blub": "Blub"
 }

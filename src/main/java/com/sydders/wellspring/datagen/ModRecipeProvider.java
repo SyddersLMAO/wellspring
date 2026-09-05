@@ -8,6 +8,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
@@ -72,5 +74,100 @@ public class ModRecipeProvider extends RecipeProvider {
         trapdoorBuilder(ModBlocks.SIFT_PLANKS_TRAPDOOR.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
                 .group("wooden_trapdoor").save(output);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAZULIUM_BLOCK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_SWORD.get())
+                .pattern("B")
+                .pattern("B")
+                .pattern("S")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.TOOLS, ModItems.BAZULIUM_PICKAXE.get())
+                .pattern("BBB")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.TOOLS, ModItems.BAZULIUM_SHOVEL.get())
+                .pattern("B")
+                .pattern("S")
+                .pattern("S")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.TOOLS, ModItems.BAZULIUM_AXE.get())
+                .pattern("BB")
+                .pattern("SB")
+                .pattern("S ")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.TOOLS, ModItems.BAZULIUM_HOE.get())
+                .pattern("BB")
+                .pattern("S ")
+                .pattern("S ")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_SPEAR.get())
+                .pattern("  B")
+                .pattern(" S ")
+                .pattern("S  ")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_HELMET.get())
+                .pattern("BBB")
+                .pattern("B B")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_CHESTPLATE.get())
+                .pattern("B B")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_LEGGINGS.get())
+                .pattern("BBB")
+                .pattern("B B")
+                .pattern("B B")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+        shaped(RecipeCategory.COMBAT, ModItems.BAZULIUM_BOOTS.get())
+                .pattern("B B")
+                .pattern("B B")
+                .define('B', ModItems.BAZULIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.BAZULIUM_INGOT.get()), has(ModItems.BAZULIUM_INGOT))
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+
     }
 }

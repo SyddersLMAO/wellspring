@@ -33,6 +33,8 @@ public class WellspringDatagen {
         generator.addProvider(true, new ModDataMapProvider(packOutput, lookupProvider));
         generator.addProvider(true, new ModItemTagsProvider(packOutput, lookupProvider));
 
+        generator.addProvider(true, new ModEquipmentAssetProvider(packOutput));
+
         generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
 
         generator.addProvider(true, new ModSoundProvider(packOutput));
