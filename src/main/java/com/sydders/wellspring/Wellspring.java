@@ -11,19 +11,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -33,10 +21,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Wellspring.MODID)
@@ -110,6 +94,20 @@ public class Wellspring {
             event.accept(ModBlocks.SIFT_PLANKS_FENCE_GATE);
             event.accept(ModBlocks.SIFT_PLANKS_DOOR);
             event.accept(ModBlocks.SIFT_PLANKS_TRAPDOOR);
+
+            event.accept(ModBlocks.WITHERED_LOG);
+            event.accept(ModBlocks.WITHERED_WOOD);
+            event.accept(ModBlocks.STRIPPED_WITHERED_LOG);
+            event.accept(ModBlocks.STRIPPED_WITHERED_WOOD);
+            event.accept(ModBlocks.WITHERED_PLANKS);
+            event.accept(ModBlocks.WITHERED_STAIRS);
+            event.accept(ModBlocks.WITHERED_SLAB);
+            event.accept(ModBlocks.WITHERED_LEAVES);
+            event.accept(ModBlocks.WITHERED_FENCE);
+            event.accept(ModBlocks.WITHERED_FENCE_GATE);
+            event.accept(ModBlocks.WITHERED_DOOR);
+            event.accept(ModBlocks.WITHERED_TRAPDOOR);
+
             event.accept(ModBlocks.BAZULIUM_ORE);
             event.accept(ModBlocks.HARDENED_BAZULIUM_ORE);
             event.accept(ModBlocks.BAZULIUM_BLOCK);
@@ -117,6 +115,7 @@ public class Wellspring {
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.SIFT_SAPLING);
+            event.accept(ModBlocks.WITHERED_SAPLING);
             event.accept(ModBlocks.BAZULIUM_ORE);
             event.accept(ModBlocks.HARDENED_BAZULIUM_ORE);
         }
@@ -124,6 +123,8 @@ public class Wellspring {
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE);
             event.accept(ModBlocks.SIFT_PLANKS_BUTTON);
+            event.accept(ModBlocks.WITHERED_PRESSURE_PLATE);
+            event.accept(ModBlocks.WITHERED_BUTTON);
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {

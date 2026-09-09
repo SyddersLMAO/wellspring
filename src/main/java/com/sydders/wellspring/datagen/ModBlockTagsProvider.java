@@ -49,40 +49,55 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.HARDENED_SIFT_STONE.get());
 
         tag(BlockTags.STAIRS)
-                .add(ModBlocks.SIFT_PLANKS_STAIRS.get());
+                .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
+                .add(ModBlocks.WITHERED_STAIRS.get());
 
         tag(BlockTags.SLABS)
-                .add(ModBlocks.SIFT_PLANKS_SLAB.get());
+                .add(ModBlocks.SIFT_PLANKS_SLAB.get())
+                .add(ModBlocks.WITHERED_SLAB.get());
 
         tag(BlockTags.PRESSURE_PLATES)
-                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get());
+                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.WITHERED_PRESSURE_PLATE.get());
 
         tag(BlockTags.BUTTONS)
-                .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get())
+                .add(ModBlocks.WITHERED_BUTTON.get());
 
         tag(BlockTags.FENCES)
-                .add(ModBlocks.SIFT_PLANKS_FENCE.get());
+                .add(ModBlocks.SIFT_PLANKS_FENCE.get())
+                .add(ModBlocks.WITHERED_FENCE.get());
 
         tag(BlockTags.FENCE_GATES)
-                .add(ModBlocks.SIFT_PLANKS_FENCE_GATE.get());
+                .add(ModBlocks.SIFT_PLANKS_FENCE_GATE.get())
+                .add(ModBlocks.WITHERED_FENCE_GATE.get());
 
         tag(BlockTags.DOORS)
-                .add(ModBlocks.SIFT_PLANKS_DOOR.get());
+                .add(ModBlocks.SIFT_PLANKS_DOOR.get())
+                .add(ModBlocks.WITHERED_DOOR.get());
 
         tag(BlockTags.TRAPDOORS)
-                .add(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
+                .add(ModBlocks.SIFT_PLANKS_TRAPDOOR.get())
+                .add(ModBlocks.WITHERED_TRAPDOOR.get());
 
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.SIFT_LEAVES.get());
+                .add(ModBlocks.SIFT_LEAVES.get())
+                .add(ModBlocks.WITHERED_LEAVES.get());
         tag(BlockTags.PLANKS)
-                .add(ModBlocks.SIFT_PLANKS.get());
+                .add(ModBlocks.SIFT_PLANKS.get())
+                .add(ModBlocks.WITHERED_PLANKS.get());
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.SIFT_LOG.get())
                 .add(ModBlocks.SIFT_WOOD.get())
                 .add(ModBlocks.STRIPPED_SIFT_LOG.get())
-                .add(ModBlocks.STRIPPED_SIFT_WOOD.get());
+                .add(ModBlocks.STRIPPED_SIFT_WOOD.get())
+                .add(ModBlocks.WITHERED_LOG.get())
+                .add(ModBlocks.WITHERED_WOOD.get())
+                .add(ModBlocks.STRIPPED_WITHERED_LOG.get())
+                .add(ModBlocks.STRIPPED_WITHERED_WOOD.get());
         tag(BlockTags.FLOWER_POTS)
-                .add(ModBlocks.POTTED_SIFT_SAPLING.get());
+                .add(ModBlocks.POTTED_SIFT_SAPLING.get())
+                .add(ModBlocks.POTTED_WITHERED_SAPLING.get());
 
         tag(ModTags.Blocks.NEEDS_BAZULIUM_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);

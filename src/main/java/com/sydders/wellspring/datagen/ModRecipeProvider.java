@@ -8,7 +8,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -73,6 +72,35 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("wooden_door").save(output);
         trapdoorBuilder(ModBlocks.SIFT_PLANKS_TRAPDOOR.get(), Ingredient.of(ModBlocks.SIFT_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.SIFT_PLANKS.get()), has(ModBlocks.SIFT_PLANKS))
+                .group("wooden_trapdoor").save(output);
+
+        woodFromLogs(ModBlocks.WITHERED_WOOD.get(), ModBlocks.WITHERED_LOG);
+        woodFromLogs(ModBlocks.STRIPPED_WITHERED_WOOD.get(), ModBlocks.STRIPPED_WITHERED_LOG);
+        planksFromLog(ModBlocks.WITHERED_PLANKS, ModTags.Items.WITHERED_LOGS, 4);
+
+        stairBuilder(ModBlocks.WITHERED_STAIRS.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WITHERED_SLAB.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_slab").save(output);
+        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.WITHERED_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_pressure_plate").save(output);
+        buttonBuilder(ModBlocks.WITHERED_BUTTON.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_button").save(output);
+        fenceBuilder(ModBlocks.WITHERED_FENCE.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_fence").save(output);
+        fenceGateBuilder(ModBlocks.WITHERED_FENCE_GATE.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_fence_gate").save(output);
+        doorBuilder(ModBlocks.WITHERED_DOOR.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
+                .group("wooden_door").save(output);
+        trapdoorBuilder(ModBlocks.WITHERED_TRAPDOOR.get(), Ingredient.of(ModBlocks.WITHERED_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
                 .group("wooden_trapdoor").save(output);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAZULIUM_BLOCK.get())

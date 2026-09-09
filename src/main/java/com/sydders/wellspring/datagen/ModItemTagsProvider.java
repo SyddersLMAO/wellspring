@@ -34,13 +34,23 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.SIFT_LOG.asItem())
                 .add(ModBlocks.SIFT_WOOD.asItem())
                 .add(ModBlocks.STRIPPED_SIFT_LOG.asItem())
-                .add(ModBlocks.STRIPPED_SIFT_WOOD.asItem());
+                .add(ModBlocks.STRIPPED_SIFT_WOOD.asItem())
+                .add(ModBlocks.WITHERED_LOG.asItem())
+                .add(ModBlocks.WITHERED_WOOD.asItem())
+                .add(ModBlocks.STRIPPED_WITHERED_LOG.asItem())
+                .add(ModBlocks.STRIPPED_WITHERED_WOOD.asItem());
 
         tag(ModTags.Items.SIFT_LOGS)
                 .add(ModBlocks.SIFT_LOG.asItem())
                 .add(ModBlocks.SIFT_WOOD.asItem())
                 .add(ModBlocks.STRIPPED_SIFT_LOG.asItem())
                 .add(ModBlocks.STRIPPED_SIFT_WOOD.asItem());
+
+        tag(ModTags.Items.WITHERED_LOGS)
+                .add(ModBlocks.WITHERED_LOG.asItem())
+                .add(ModBlocks.WITHERED_WOOD.asItem())
+                .add(ModBlocks.STRIPPED_WITHERED_LOG.asItem())
+                .add(ModBlocks.STRIPPED_WITHERED_WOOD.asItem());
 
         tag(ModTags.Items.BAZULIUM_REPAIRABLE)
                 .add(ModItems.BAZULIUM_INGOT.get());

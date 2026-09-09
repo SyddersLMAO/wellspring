@@ -108,6 +108,22 @@ public class ModModelProvider extends ModelProvider {
                 .door(ModBlocks.SIFT_PLANKS_DOOR.get())
                 .trapdoor(ModBlocks.SIFT_PLANKS_TRAPDOOR.get());
 
+        blockModels.woodProvider(ModBlocks.WITHERED_LOG.get()).logWithHorizontal(ModBlocks.WITHERED_LOG.get()).wood(ModBlocks.WITHERED_WOOD.get());
+        blockModels.woodProvider(ModBlocks.STRIPPED_WITHERED_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_WITHERED_LOG.get()).wood(ModBlocks.STRIPPED_WITHERED_WOOD.get());
+        blockModels.createTrivialCube(ModBlocks.WITHERED_LEAVES.get());
+
+        blockModels.createPlantWithDefaultItem(ModBlocks.WITHERED_SAPLING.get(), ModBlocks.POTTED_WITHERED_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
+        blockModels.family(ModBlocks.WITHERED_PLANKS.get())
+                .stairs(ModBlocks.WITHERED_STAIRS.get())
+                .slab(ModBlocks.WITHERED_SLAB.get())
+                .pressurePlate(ModBlocks.WITHERED_PRESSURE_PLATE.get())
+                .button(ModBlocks.WITHERED_BUTTON.get())
+                .fence(ModBlocks.WITHERED_FENCE.get())
+                .fenceGate(ModBlocks.WITHERED_FENCE_GATE.get())
+                .door(ModBlocks.WITHERED_DOOR.get())
+                .trapdoor(ModBlocks.WITHERED_TRAPDOOR.get());
+
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.HARDENED_BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_BLOCK.get());

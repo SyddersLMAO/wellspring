@@ -18,6 +18,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SIFT_PLACED_KEY = registerKey("sift_placed");
+    public static final ResourceKey<PlacedFeature> WITHERED_PLACED_KEY = registerKey("withered_placed");
     public static final ResourceKey<PlacedFeature> SIFT_SPARSE_PLACED_KEY = registerKey("sift_sparse_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -30,6 +31,10 @@ public class ModPlacedFeatures {
         register(context, SIFT_SPARSE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SIFT_KEY),
                 VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(6),
                         ModBlocks.SIFT_SAPLING.get()));
+
+        register(context, WITHERED_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITHERED_KEY),
+                VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(6),
+                        ModBlocks.WITHERED_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

@@ -135,6 +135,93 @@ public class ModBlocks {
             properties -> new TrapDoorBlock(BlockSetType.WARPED,
                     properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
 
+
+    public static final DeferredBlock<Block> WITHERED_LOG = registerBlock("withered_log",
+            properties -> new ModFlammableRotatedPillarBlock(
+                    properties.strength(2f).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final DeferredBlock<Block> WITHERED_WOOD = registerBlock("withered_wood",
+            properties -> new ModFlammableRotatedPillarBlock(
+                    properties.strength(2f).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final DeferredBlock<Block> STRIPPED_WITHERED_LOG = registerBlock("stripped_withered_log",
+            properties -> new ModFlammableRotatedPillarBlock(
+                    properties.strength(2f).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final DeferredBlock<Block> STRIPPED_WITHERED_WOOD = registerBlock("stripped_withered_wood",
+            properties -> new ModFlammableRotatedPillarBlock(
+                    properties.strength(2f).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final DeferredBlock<Block> WITHERED_PLANKS = registerBlock("withered_planks",
+            properties -> new Block(properties.mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD).ignitedByLava()) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+            });
+    public static final DeferredBlock<Block> WITHERED_LEAVES = registerBlock("withered_leaves",
+            properties -> new UntintedParticleLeavesBlock(0.01f, ParticleTypes.CHERRY_LEAVES,
+                    properties.mapColor(MapColor.COLOR_GREEN).strength(2.0F).randomTicks().sound(SoundType.GRASS)
+                            .noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).ignitedByLava().pushReaction(PushReaction.DESTROY)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+            });
+
+    public static final DeferredBlock<Block> WITHERED_SAPLING = registerBlock("withered_sapling",
+            properties -> new SaplingBlock(ModTreeGrowers.WITHERED, properties.mapColor(MapColor.PLANT)
+                    .noCollision().randomTicks().instabreak().sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> POTTED_WITHERED_SAPLING = BLOCKS.registerBlock("potted_withered_sapling",
+            properties -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), WITHERED_SAPLING,
+                    properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> WITHERED_STAIRS = registerBlock("withered_stairs",
+            properties -> new StairBlock(ModBlocks.WITHERED_PLANKS.get().defaultBlockState(),
+                    properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
+    public static final DeferredBlock<Block> WITHERED_SLAB = registerBlock("withered_slab",
+            properties -> new SlabBlock(properties.strength(2f, 3f).sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> WITHERED_PRESSURE_PLATE = registerBlock("withered_pressure_plate",
+            properties -> new PressurePlateBlock(BlockSetType.WARPED,
+                    properties.mapColor(MapColor.COLOR_GREEN).forceSolidOn()
+                            .noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> WITHERED_BUTTON = registerBlock("withered_button",
+            properties -> new ButtonBlock(BlockSetType.WARPED, 20,
+                    properties.noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> WITHERED_FENCE = registerBlock("withered_fence",
+            properties -> new FenceBlock(properties.strength(2F).sound(SoundType.NETHER_WOOD)));
+    public static final DeferredBlock<Block> WITHERED_FENCE_GATE = registerBlock("withered_fence_gate",
+            properties -> new FenceGateBlock(WoodType.WARPED, properties.strength(2F).sound(SoundType.NETHER_WOOD)));
+
+    public static final DeferredBlock<Block> WITHERED_DOOR = registerBlock("withered_door",
+            properties -> new DoorBlock(BlockSetType.WARPED,
+                    properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
+    public static final DeferredBlock<Block> WITHERED_TRAPDOOR = registerBlock("withered_trapdoor",
+            properties -> new TrapDoorBlock(BlockSetType.WARPED,
+                    properties.strength(2F).sound(SoundType.NETHER_WOOD).noOcclusion()));
+
     public static final DeferredBlock<Block> BAZULIUM_ORE = registerBlock("bazulium_ore",
             properties -> new Block(properties.strength(3f).requiresCorrectToolForDrops()
                     .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_ORANGE)));

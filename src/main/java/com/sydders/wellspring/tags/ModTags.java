@@ -21,6 +21,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> SIFT_LOGS = createTag("sift_logs");
+        public static final TagKey<Item> WITHERED_LOGS = createTag("withered_logs");
 
         public static final TagKey<Item> BAZULIUM_REPAIRABLE = createTag("bazulium_repairable");
 

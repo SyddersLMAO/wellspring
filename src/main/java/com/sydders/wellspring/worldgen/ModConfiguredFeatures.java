@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlace
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIFT_KEY = registerKey("sift");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WITHERED_KEY = registerKey("withered");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, SIFT_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -26,6 +27,16 @@ public class ModConfiguredFeatures {
                 new ForkingTrunkPlacer(4,3,4),
 
                 BlockStateProvider.simple(ModBlocks.SIFT_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).build());
+
+        register(context, WITHERED_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.WITHERED_LOG.get()),
+                new ForkingTrunkPlacer(4,3,4),
+
+                BlockStateProvider.simple(ModBlocks.WITHERED_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
 
                 new TwoLayersFeatureSize(1, 0, 2)

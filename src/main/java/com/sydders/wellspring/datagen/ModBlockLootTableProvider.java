@@ -57,6 +57,26 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.SIFT_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.SIFT_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.POTTED_SIFT_SAPLING.get(), createPotFlowerItemTable((ModBlocks.SIFT_SAPLING)));
 
+        dropSelf(ModBlocks.WITHERED_LOG.get());
+        dropSelf(ModBlocks.WITHERED_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_WITHERED_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_WITHERED_WOOD.get());
+        dropSelf(ModBlocks.WITHERED_PLANKS.get());
+        dropSelf(ModBlocks.WITHERED_SAPLING.get());
+
+        dropSelf(ModBlocks.WITHERED_STAIRS.get());
+        add(ModBlocks.WITHERED_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.WITHERED_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.WITHERED_BUTTON.get());
+        dropSelf(ModBlocks.WITHERED_FENCE.get());
+        dropSelf(ModBlocks.WITHERED_FENCE_GATE.get());
+        dropSelf(ModBlocks.WITHERED_TRAPDOOR.get());
+
+        add(ModBlocks.WITHERED_DOOR.get(), this::createDoorTable);
+
+        add(ModBlocks.WITHERED_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.WITHERED_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.POTTED_WITHERED_SAPLING.get(), createPotFlowerItemTable((ModBlocks.WITHERED_SAPLING)));
+
         add(ModBlocks.BAZULIUM_ORE.get(),
                 createOreDrop(ModBlocks.BAZULIUM_ORE.get(), ModItems.RAW_BAZULIUM.get()));
         add(ModBlocks.HARDENED_BAZULIUM_ORE.get(),

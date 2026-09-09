@@ -24,6 +24,8 @@ public class ModDataMapProvider extends DataMapProvider {
     protected void gather(HolderLookup.Provider provider) {
         builder(NeoForgeDataMaps.STRIPPABLES)
                 .add(ModBlocks.SIFT_LOG, new Strippable(ModBlocks.STRIPPED_SIFT_LOG.get()), false)
-                .add(ModBlocks.SIFT_WOOD, new Strippable(ModBlocks.STRIPPED_SIFT_WOOD.get()), false);
+                .add(ModBlocks.SIFT_WOOD, new Strippable(ModBlocks.STRIPPED_SIFT_WOOD.get()), false)
+                .add(ModBlocks.WITHERED_LOG, new Strippable(ModBlocks.STRIPPED_WITHERED_LOG.get()), false)
+                .add(ModBlocks.WITHERED_WOOD, new Strippable(ModBlocks.STRIPPED_WITHERED_WOOD.get()), false);
     }
 }
