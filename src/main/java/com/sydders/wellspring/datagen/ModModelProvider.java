@@ -110,7 +110,6 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.woodProvider(ModBlocks.WITHERED_LOG.get()).logWithHorizontal(ModBlocks.WITHERED_LOG.get()).wood(ModBlocks.WITHERED_WOOD.get());
         blockModels.woodProvider(ModBlocks.STRIPPED_WITHERED_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_WITHERED_LOG.get()).wood(ModBlocks.STRIPPED_WITHERED_WOOD.get());
-        blockModels.createTrivialCube(ModBlocks.WITHERED_LEAVES.get());
 
         blockModels.createPlantWithDefaultItem(ModBlocks.WITHERED_SAPLING.get(), ModBlocks.POTTED_WITHERED_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 

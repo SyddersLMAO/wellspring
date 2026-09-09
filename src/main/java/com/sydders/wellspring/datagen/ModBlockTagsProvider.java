@@ -81,8 +81,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WITHERED_TRAPDOOR.get());
 
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.SIFT_LEAVES.get())
-                .add(ModBlocks.WITHERED_LEAVES.get());
+                .add(ModBlocks.SIFT_LEAVES.get());
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.SIFT_PLANKS.get())
                 .add(ModBlocks.WITHERED_PLANKS.get());

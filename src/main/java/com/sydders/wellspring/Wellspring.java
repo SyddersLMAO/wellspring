@@ -7,6 +7,7 @@ import com.sydders.wellspring.entity.ModSpawnPlacements;
 import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.portal.SiftTeleporter;
 import com.sydders.wellspring.sound.ModSounds;
+import com.sydders.wellspring.worldgen.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -55,6 +56,9 @@ public class Wellspring {
         // Register Sounds
         ModSounds.register(modEventBus);
 
+        // Register worldgen types
+        ModTrunkPlacerTypes.register(modEventBus);
+
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Wellspring) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -102,7 +106,6 @@ public class Wellspring {
             event.accept(ModBlocks.WITHERED_PLANKS);
             event.accept(ModBlocks.WITHERED_STAIRS);
             event.accept(ModBlocks.WITHERED_SLAB);
-            event.accept(ModBlocks.WITHERED_LEAVES);
             event.accept(ModBlocks.WITHERED_FENCE);
             event.accept(ModBlocks.WITHERED_FENCE_GATE);
             event.accept(ModBlocks.WITHERED_DOOR);

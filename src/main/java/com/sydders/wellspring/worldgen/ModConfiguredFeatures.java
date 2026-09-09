@@ -2,6 +2,7 @@ package com.sydders.wellspring.worldgen;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.worldgen.tree.WitheredTrunkPlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
@@ -34,12 +35,12 @@ public class ModConfiguredFeatures {
 
         register(context, WITHERED_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.WITHERED_LOG.get()),
-                new ForkingTrunkPlacer(4,3,4),
+                new WitheredTrunkPlacer(6, 3, 4),
 
-                BlockStateProvider.simple(ModBlocks.WITHERED_LEAVES.get()),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+                BlockStateProvider.simple(Blocks.AIR),
+                new BlobFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), 0),
 
-                new TwoLayersFeatureSize(1, 0, 2)
+                new TwoLayersFeatureSize(1, 0, 5)
         ).build());
     }
 

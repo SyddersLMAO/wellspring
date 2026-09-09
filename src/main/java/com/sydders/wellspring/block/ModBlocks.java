@@ -167,25 +167,6 @@ public class ModBlocks {
                     return 5;
                 }
             });
-    public static final DeferredBlock<Block> WITHERED_LEAVES = registerBlock("withered_leaves",
-            properties -> new UntintedParticleLeavesBlock(0.01f, ParticleTypes.CHERRY_LEAVES,
-                    properties.mapColor(MapColor.COLOR_GREEN).strength(2.0F).randomTicks().sound(SoundType.GRASS)
-                            .noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).ignitedByLava().pushReaction(PushReaction.DESTROY)) {
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-            });
 
     public static final DeferredBlock<Block> WITHERED_SAPLING = registerBlock("withered_sapling",
             properties -> new SaplingBlock(ModTreeGrowers.WITHERED, properties.mapColor(MapColor.PLANT)

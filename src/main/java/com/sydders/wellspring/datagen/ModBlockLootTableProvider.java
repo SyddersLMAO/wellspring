@@ -74,7 +74,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(ModBlocks.WITHERED_DOOR.get(), this::createDoorTable);
 
-        add(ModBlocks.WITHERED_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.WITHERED_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.POTTED_WITHERED_SAPLING.get(), createPotFlowerItemTable((ModBlocks.WITHERED_SAPLING)));
 
         add(ModBlocks.BAZULIUM_ORE.get(),
