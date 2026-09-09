@@ -1,4 +1,24 @@
 {
+  "attributes": {
+    "minecraft:visual/cloud_color": 2367281,
+    "minecraft:visual/fog_start_distance": 8,
+    "minecraft:visual/sky_color": 4012102,
+    "minecraft:visual/star_brightness": 0.2,
+    "minecraft:visual/sunrise_sunset_color": 12607947,
+    "minecraft:visual/ambient_particles": {
+      "modifier": "override",
+      "argument": [
+        {
+          "particle": {
+            "type": "minecraft:ash"
+          },
+          "probability": 0.3
+        }
+      ]
+    },
+    "minecraft:visual/fog_end_distance": 64,
+    "minecraft:visual/fog_color": 2367281
+  },
   "temperature": 0.9,
   "downfall": 0.4,
   "has_precipitation": false,
@@ -8,13 +28,8 @@
     "foliage_color": 3155491,
     "dry_foliage_color": 3155491
   },
-  "spawners": {
-  },
+  "spawners": {},
   "spawn_costs": {},
-  "carvers": [
-    "minecraft:cave",
-    "minecraft:cave_extra_underground",
-    "minecraft:canyon"
-  ],
+  "carvers": [],
   "features": []
 }
