@@ -35,6 +35,7 @@ public class ModTags {
 
     public static class Biomes {
         public static final TagKey<Biome> IS_SIFT = createTag("is_sift");
+        public static final TagKey<Biome> IS_WITHERED = createTag("is_withered");
 
         private static TagKey<Biome> createTag(String name) {
             return TagKey.create(

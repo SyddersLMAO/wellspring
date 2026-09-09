@@ -12,10 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -25,6 +22,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SIFT_SPARSE_PLACED_KEY = registerKey("sift_sparse_placed");
 
     public static final ResourceKey<PlacedFeature> BAZULIUM_ORE_PLACED_KEY = registerKey("bazulium_ore_placed");
+
+    public static final ResourceKey<PlacedFeature> WITHER_ROSE_PLACED_KEY = registerKey("wither_rose_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -45,6 +44,9 @@ public class ModPlacedFeatures {
         register(context, BAZULIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BAZULIUM_ORE_KEY),
                 OrePlacements.commonOrePlacement(12,
                         HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(15))));
+
+        register(context, WITHER_ROSE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITHER_ROSE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

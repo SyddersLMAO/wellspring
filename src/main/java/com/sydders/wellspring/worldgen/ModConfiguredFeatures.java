@@ -3,21 +3,25 @@ package com.sydders.wellspring.worldgen;
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.worldgen.tree.WitheredTrunkPlacer;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
+import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
@@ -28,6 +32,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WITHERED_KEY = registerKey("withered");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAZULIUM_ORE_KEY = registerKey("bazulium_ore");
+
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WITHER_ROSE_KEY = registerKey("wither_rose");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, SIFT_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -56,6 +63,15 @@ public class ModConfiguredFeatures {
         register(context, BAZULIUM_ORE_KEY, Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(siftStoneReplaceables, ModBlocks.BAZULIUM_ORE.get().defaultBlockState()),
                 OreConfiguration.target(hardenedSiftStoneReplaceables, ModBlocks.HARDENED_BAZULIUM_ORE.get().defaultBlockState())), 8));
+
+        register(context, WITHER_ROSE_KEY, Feature.SIMPLE_RANDOM_SELECTOR,
+                new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.WITHER_ROSE.defaultBlockState())),
+                                CountPlacement.of(32),
+                                RandomOffsetPlacement.ofTriangle(6, 3),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)))));
+        
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
