@@ -5,11 +5,14 @@ import com.sydders.wellspring.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
@@ -20,6 +23,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SIFT_PLACED_KEY = registerKey("sift_placed");
     public static final ResourceKey<PlacedFeature> WITHERED_PLACED_KEY = registerKey("withered_placed");
     public static final ResourceKey<PlacedFeature> SIFT_SPARSE_PLACED_KEY = registerKey("sift_sparse_placed");
+
+    public static final ResourceKey<PlacedFeature> BAZULIUM_ORE_PLACED_KEY = registerKey("bazulium_ore_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -33,8 +38,13 @@ public class ModPlacedFeatures {
                         ModBlocks.SIFT_SAPLING.get()));
 
         register(context, WITHERED_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITHERED_KEY),
-                VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(6),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1f, 1),
                         ModBlocks.WITHERED_SAPLING.get()));
+
+
+        register(context, BAZULIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BAZULIUM_ORE_KEY),
+                OrePlacements.commonOrePlacement(12,
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(15))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

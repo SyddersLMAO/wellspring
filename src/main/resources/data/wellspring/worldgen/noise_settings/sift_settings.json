@@ -25,7 +25,15 @@
     "vein_ridged": 0,
     "vein_gap": 0,
     "temperature": "wellspring:sift/terrain_selector",
-    "vegetation": 0,
+    "vegetation": {
+      "type": "minecraft:flat_cache",
+      "argument": {
+        "type": "minecraft:noise",
+        "noise": "wellspring:forest_detail",
+        "xz_scale": 0.018,
+        "y_scale": 0
+      }
+    },
     "continents": 0,
     "erosion": 0,
     "depth": 0,
