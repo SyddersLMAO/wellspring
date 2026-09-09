@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": "wellspring:sift/base_height",
+    "argument2": "wellspring:sift/terrain/jagged_pool_basin"
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.045,
+    "argument2": {
+      "type": "minecraft:noise",
+      "noise": "wellspring:plains_detail",
+      "xz_scale": 0.055,
+      "y_scale": 0.0
+    }
+  }
+}

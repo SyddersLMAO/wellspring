@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "wellspring:sift/terrain/jagged_maze_field",
+  "min_inclusive": 0.046,
+  "max_exclusive": 0.088,
+  "when_in_range": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 68,
+      "to_y": 72,
+      "from_value": -0.045,
+      "to_value": 0.014
+    },
+    "argument2": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 75,
+      "to_y": 82,
+      "from_value": 0.01,
+      "to_value": -0.07
+    }
+  },
+  "when_out_of_range": 0.0
+}

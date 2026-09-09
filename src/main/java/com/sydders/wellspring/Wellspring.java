@@ -3,7 +3,9 @@ package com.sydders.wellspring;
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.entity.ModEntities;
 import com.sydders.wellspring.entity.ModEntityAttributes;
+import com.sydders.wellspring.entity.ModSpawnPlacements;
 import com.sydders.wellspring.item.ModItems;
+import com.sydders.wellspring.portal.SiftTeleporter;
 import com.sydders.wellspring.sound.ModSounds;
 import org.slf4j.Logger;
 
@@ -55,11 +57,15 @@ public class Wellspring {
 
         // Register Blocks
         ModBlocks.register(modEventBus);
+        modEventBus.addListener(SiftTeleporter::registerPointOfInterest);
 
         // Register Entities
         ModEntities.ENTITY_TYPES.register(modEventBus);
         modEventBus.addListener(
                 ModEntityAttributes::registerAttributes
+        );
+        modEventBus.addListener(
+                ModSpawnPlacements::registerSpawnPlacements
         );
 
         // Register Sounds
@@ -126,6 +132,10 @@ public class Wellspring {
             event.accept(ModItems.BAZULIUM_AXE);
             event.accept(ModItems.BAZULIUM_SHOVEL);
             event.accept(ModItems.BAZULIUM_HOE);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(ModItems.BLUB_SPAWN_EGG);
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {

@@ -12,17 +12,23 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SIFT_PLACED_KEY = registerKey("sift_placed");
+    public static final ResourceKey<PlacedFeature> SIFT_SPARSE_PLACED_KEY = registerKey("sift_sparse_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, SIFT_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SIFT_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1f, 1),
+                        ModBlocks.SIFT_SAPLING.get()));
+
+        register(context, SIFT_SPARSE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SIFT_KEY),
+                VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(6),
                         ModBlocks.SIFT_SAPLING.get()));
     }
 

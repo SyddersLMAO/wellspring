@@ -40,6 +40,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.DIRT)
                 .add(ModBlocks.SIFT_GRASS_BLOCK.get());
 
+        tag(BlockTags.ANIMALS_SPAWNABLE_ON)
+                .add(ModBlocks.SIFT_GRASS_BLOCK.get());
+
+        tag(ModTags.Blocks.BLUB_SPAWNABLE_ON)
+                .add(ModBlocks.SIFT_GRASS_BLOCK.get())
+                .add(ModBlocks.SIFT_STONE.get())
+                .add(ModBlocks.HARDENED_SIFT_STONE.get());
+
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.SIFT_PLANKS_STAIRS.get());
 

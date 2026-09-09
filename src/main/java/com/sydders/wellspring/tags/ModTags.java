@@ -12,6 +12,7 @@ public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> NEEDS_BAZULIUM_TOOL = createTag("needs_bazulium_tool");
         public static final TagKey<Block> INCORRECT_FOR_BAZULIUM_TOOL = createTag("incorrect_for_bazulium_tool");
+        public static final TagKey<Block> BLUB_SPAWNABLE_ON = createTag("blub_spawnable_on");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(Identifier.fromNamespaceAndPath(Wellspring.MODID, name));

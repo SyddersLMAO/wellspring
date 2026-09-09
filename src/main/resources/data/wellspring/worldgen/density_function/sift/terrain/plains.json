@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:add",
+  "argument1": "wellspring:sift/base_height",
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:mul",
+      "argument1": 0.035,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "wellspring:plains_detail",
+        "xz_scale": 0.026,
+        "y_scale": 0.0
+      }
+    },
+    "argument2": {
+      "type": "minecraft:mul",
+      "argument1": 0.014,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "wellspring:plains_detail",
+        "xz_scale": 0.075,
+        "y_scale": 0.0
+      }
+    }
+  }
+}

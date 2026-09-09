@@ -1,107 +1,282 @@
 package com.sydders.wellspring.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.sydders.wellspring.portal.SiftPortalManager;
+import com.sydders.wellspring.Wellspring;
+import com.sydders.wellspring.portal.SiftPortalShape;
+import com.sydders.wellspring.portal.SiftTeleporter;
+import com.sydders.wellspring.worldgen.ModDimensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.BlockUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.Portal;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class SiftPortalBlock extends Block implements Portal {
+import java.util.Optional;
 
-    public static final MapCodec<SiftPortalBlock> CODEC =
-            simpleCodec(SiftPortalBlock::new);
-
-    public static final EnumProperty<Direction.Axis> AXIS =
-            BlockStateProperties.HORIZONTAL_AXIS;
-
-    private static final VoxelShape X_SHAPE =
-            Block.box(0, 0, 6, 16, 16, 10);
-
-    private static final VoxelShape Z_SHAPE =
-            Block.box(6, 0, 0, 10, 16, 16);
-
-    public SiftPortalBlock(Properties properties) {
+public class SiftPortalBlock extends NetherPortalBlock {
+    public SiftPortalBlock(BlockBehaviour.Properties properties) {
         super(properties);
+    }
 
-        registerDefaultState(
-                stateDefinition.any()
-                        .setValue(AXIS, Direction.Axis.X)
+    public static boolean canSpawnPortal(
+            Level level,
+            BlockPos pos
+    ) {
+        return SiftPortalShape.findEmptyPortalShape(
+                level,
+                pos,
+                Direction.Axis.X
+        ).isPresent();
+    }
+
+    public static boolean trySpawnPortal(
+            Level level,
+            BlockPos pos
+    ) {
+        Optional<SiftPortalShape> optional = SiftPortalShape.findEmptyPortalShape(
+                level,
+                pos,
+                Direction.Axis.X
+        );
+
+        optional.ifPresent(shape -> shape.createPortalBlocks(level));
+
+        return optional.isPresent();
+    }
+
+    @Override
+    protected BlockState updateShape(
+            BlockState state,
+            LevelReader level,
+            ScheduledTickAccess ticks,
+            BlockPos pos,
+            Direction directionToNeighbour,
+            BlockPos neighbourPos,
+            BlockState neighbourState,
+            RandomSource random
+    ) {
+        Direction.Axis updateAxis = directionToNeighbour.getAxis();
+        Direction.Axis axis = state.getValue(AXIS);
+        boolean wrongAxis = axis != updateAxis && updateAxis.isHorizontal();
+
+        return !wrongAxis
+                && !neighbourState.is(this)
+                && !SiftPortalShape.findAnyShape(level, pos, axis).isComplete()
+                ? Blocks.AIR.defaultBlockState()
+                : super.updateShape(
+                        state,
+                        level,
+                        ticks,
+                        pos,
+                        directionToNeighbour,
+                        neighbourPos,
+                        neighbourState,
+                        random
+                );
+    }
+
+    @Override
+    @Nullable
+    public TeleportTransition getPortalDestination(
+            ServerLevel currentLevel,
+            Entity entity,
+            BlockPos portalEntryPos
+    ) {
+        ServerLevel destination = currentLevel.getServer().getLevel(
+                currentLevel.dimension().equals(ModDimensions.SIFT)
+                        ? Level.OVERWORLD
+                        : ModDimensions.SIFT
+        );
+
+        if (destination == null) {
+            return null;
+        }
+
+        boolean toSift = destination.dimension().equals(ModDimensions.SIFT);
+        WorldBorder worldBorder = destination.getWorldBorder();
+        double teleportationScale = DimensionType.getTeleportationScale(
+                currentLevel.dimensionType(),
+                destination.dimensionType()
+        );
+        BlockPos approximateExitPos = worldBorder.clampToBounds(
+                entity.getX() * teleportationScale,
+                entity.getY(),
+                entity.getZ() * teleportationScale
+        );
+
+        return getExitPortal(
+                destination,
+                entity,
+                portalEntryPos,
+                approximateExitPos,
+                toSift,
+                worldBorder
         );
     }
 
-    @Override
-    public MapCodec<SiftPortalBlock> codec() {
-        return CODEC;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(
-            StateDefinition.Builder<Block, BlockState> builder
-    ) {
-        builder.add(AXIS);
-    }
-
-    @Override
-    protected VoxelShape getShape(
-            BlockState state,
-            BlockGetter level,
-            BlockPos pos,
-            CollisionContext context
-    ) {
-        return state.getValue(AXIS) == Direction.Axis.X
-                ? X_SHAPE
-                : Z_SHAPE;
-    }
-
-    @Override
-    protected BlockState rotate(
-            BlockState state,
-            Rotation rotation
-    ) {
-        return switch (rotation) {
-            case CLOCKWISE_90, COUNTERCLOCKWISE_90 -> state.setValue(
-                    AXIS,
-                    state.getValue(AXIS) == Direction.Axis.X
-                            ? Direction.Axis.Z
-                            : Direction.Axis.X
-            );
-            default -> state;
-        };
-    }
-
-    @Override
-    protected void entityInside(
-            BlockState state,
-            Level level,
-            BlockPos pos,
+    @Nullable
+    private TeleportTransition getExitPortal(
+            ServerLevel destination,
             Entity entity,
-            InsideBlockEffectApplier effectApplier,
-            boolean isPrecise
+            BlockPos portalEntryPos,
+            BlockPos approximateExitPos,
+            boolean toSift,
+            WorldBorder worldBorder
     ) {
-        if (entity.canUsePortal(false)) {
-            entity.setAsInsidePortal(this, pos);
+        Optional<BlockPos> exitPortalPos = new SiftTeleporter(destination)
+                .findClosestPortalPosition(
+                        approximateExitPos,
+                        toSift,
+                        worldBorder
+                );
+        BlockUtil.FoundRectangle exitPortal;
+        TeleportTransition.PostTeleportTransition postTeleportTransition;
+
+        if (exitPortalPos.isPresent()) {
+            BlockPos pos = exitPortalPos.get();
+            BlockState portalState = destination.getBlockState(pos);
+            exitPortal = BlockUtil.getLargestRectangleAround(
+                    pos,
+                    portalState.getValue(BlockStateProperties.HORIZONTAL_AXIS),
+                    SiftPortalShape.MAX_WIDTH,
+                    Direction.Axis.Y,
+                    SiftPortalShape.MAX_HEIGHT,
+                    blockPos -> destination.getBlockState(blockPos) == portalState
+            );
+            postTeleportTransition = TeleportTransition.PLAY_PORTAL_SOUND
+                    .then(teleportedEntity -> teleportedEntity.placePortalTicket(pos));
+        } else {
+            Direction.Axis sourcePortalAxis = entity.level()
+                    .getBlockState(portalEntryPos)
+                    .getOptionalValue(AXIS)
+                    .orElse(Direction.Axis.X);
+            SiftTeleporter teleporter = new SiftTeleporter(destination);
+            Optional<BlockUtil.FoundRectangle> createdExit = toSift
+                    ? teleporter.createGatewayPortal(approximateExitPos, sourcePortalAxis)
+                    : teleporter.createPortal(approximateExitPos, sourcePortalAxis);
+
+            if (createdExit.isEmpty()) {
+                Wellspring.LOGGER.error(
+                        "Unable to create a Sift portal near {} in {}",
+                        approximateExitPos,
+                        destination.dimension().identifier()
+                );
+                return null;
+            }
+
+            exitPortal = createdExit.get();
+            postTeleportTransition = TeleportTransition.PLAY_PORTAL_SOUND
+                    .then(TeleportTransition.PLACE_PORTAL_TICKET);
         }
+
+        return getDimensionTransitionFromExit(
+                entity,
+                portalEntryPos,
+                exitPortal,
+                destination,
+                postTeleportTransition
+        );
+    }
+
+    private static TeleportTransition getDimensionTransitionFromExit(
+            Entity entity,
+            BlockPos portalEntryPos,
+            BlockUtil.FoundRectangle exitPortal,
+            ServerLevel destination,
+            TeleportTransition.PostTeleportTransition postTeleportTransition
+    ) {
+        BlockState blockState = entity.level().getBlockState(portalEntryPos);
+        Direction.Axis axis;
+        Vec3 offset;
+
+        if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
+            axis = blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+            BlockUtil.FoundRectangle portalArea = BlockUtil.getLargestRectangleAround(
+                    portalEntryPos,
+                    axis,
+                    SiftPortalShape.MAX_WIDTH,
+                    Direction.Axis.Y,
+                    SiftPortalShape.MAX_HEIGHT,
+                    pos -> entity.level().getBlockState(pos) == blockState
+            );
+            offset = entity.getRelativePortalPosition(axis, portalArea);
+        } else {
+            axis = Direction.Axis.X;
+            offset = new Vec3(0.5, 0.0, 0.0);
+        }
+
+        return createDimensionTransition(
+                destination,
+                exitPortal,
+                axis,
+                offset,
+                entity,
+                postTeleportTransition
+        );
+    }
+
+    private static TeleportTransition createDimensionTransition(
+            ServerLevel destination,
+            BlockUtil.FoundRectangle foundRectangle,
+            Direction.Axis sourcePortalAxis,
+            Vec3 offset,
+            Entity entity,
+            TeleportTransition.PostTeleportTransition postTeleportTransition
+    ) {
+        BlockPos bottomLeft = foundRectangle.minCorner;
+        BlockState blockState = destination.getBlockState(bottomLeft);
+        Direction.Axis targetPortalAxis = blockState
+                .getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS)
+                .orElse(Direction.Axis.X);
+        double width = foundRectangle.axis1Size;
+        double height = foundRectangle.axis2Size;
+        EntityDimensions dimensions = entity.getDimensions(entity.getPose());
+        int outputRotation = sourcePortalAxis == targetPortalAxis ? 0 : 90;
+        double offsetRight = dimensions.width() / 2.0
+                + (width - dimensions.width()) * offset.x();
+        double offsetUp = (height - dimensions.height()) * offset.y();
+        double offsetForward = 0.5 + offset.z();
+        boolean xAligned = targetPortalAxis == Direction.Axis.X;
+        Vec3 targetPos = new Vec3(
+                bottomLeft.getX() + (xAligned ? offsetRight : offsetForward),
+                bottomLeft.getY() + offsetUp,
+                bottomLeft.getZ() + (xAligned ? offsetForward : offsetRight)
+        );
+        Vec3 collisionFreePos = SiftPortalShape.findCollisionFreePosition(
+                targetPos,
+                destination,
+                entity,
+                dimensions
+        );
+
+        return new TeleportTransition(
+                destination,
+                collisionFreePos,
+                Vec3.ZERO,
+                outputRotation,
+                0.0F,
+                Relative.union(Relative.DELTA, Relative.ROTATION),
+                postTeleportTransition
+        );
     }
 
     @Override
@@ -113,8 +288,8 @@ public class SiftPortalBlock extends Block implements Portal {
     }
 
     @Override
-    public Transition getLocalTransition() {
-        return Transition.NONE;
+    public Portal.Transition getLocalTransition() {
+        return Portal.Transition.NONE;
     }
 
     @Override
@@ -149,49 +324,15 @@ public class SiftPortalBlock extends Block implements Portal {
                 x = pos.getX() + 0.5D + 0.25D * side;
             }
 
-            level.addParticle(ParticleTypes.SCULK_SOUL, x, y, z, 0.0D, 0.03D, 0.0D);
+            level.addParticle(
+                    ParticleTypes.SCULK_SOUL,
+                    x,
+                    y,
+                    z,
+                    0.0D,
+                    0.03D,
+                    0.0D
+            );
         }
-    }
-
-    @Nullable
-    @Override
-    public TeleportTransition getPortalDestination(
-            ServerLevel currentLevel,
-            Entity entity,
-            BlockPos portalEntryPos
-    ) {
-
-        var endpoint = SiftPortalManager.findOrCreateDestination(
-                currentLevel,
-                portalEntryPos
-        );
-
-        if (endpoint.isEmpty()) {
-            return null;
-        }
-
-        ServerLevel destination = currentLevel.getServer()
-                .getLevel(endpoint.get().dimension());
-
-        if (destination == null) {
-            return null;
-        }
-
-        Vec3 target = PortalShape.findCollisionFreePosition(
-                Vec3.atBottomCenterOf(endpoint.get().position()),
-                destination,
-                entity,
-                entity.getDimensions(entity.getPose())
-        );
-
-        return new TeleportTransition(
-                destination,
-                target,
-                Vec3.ZERO,
-                entity.getYRot(),
-                entity.getXRot(),
-                TeleportTransition.PLAY_PORTAL_SOUND
-                        .then(TeleportTransition.PLACE_PORTAL_TICKET)
-        );
     }
 }

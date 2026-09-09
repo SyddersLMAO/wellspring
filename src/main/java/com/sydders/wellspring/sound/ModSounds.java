@@ -22,6 +22,15 @@ public class ModSounds {
     public static final Supplier<SoundEvent> BLUB_DEATH =
             registerSound("entity.blub.death");
 
+    public static final Supplier<SoundEvent> SIFT_MUSIC =
+            registerSound("music.sift");
+
+    public static final Supplier<SoundEvent> SIFT_CREATIVE_MUSIC =
+            registerSound("music.sift.creative");
+
+    public static final Supplier<SoundEvent> SIFT_CAVE_NOISE =
+            registerSound("ambient.sift.cave");
+
 
     private static Supplier<SoundEvent> registerSound(String name) {
         return SOUND_EVENTS.register(

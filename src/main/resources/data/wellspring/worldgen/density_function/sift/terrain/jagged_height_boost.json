@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:mul",
+    "argument1": "wellspring:sift/terrain/jagged_wall_presence",
+    "argument2": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:add",
+        "argument1": 0.034,
+        "argument2": {
+          "type": "minecraft:mul",
+          "argument1": 0.055,
+          "argument2": {
+            "type": "minecraft:noise",
+            "noise": "wellspring:jagged_height",
+            "xz_scale": 0.055,
+            "y_scale": 0.0
+          }
+        }
+      },
+      "min": 0.014,
+      "max": 0.085
+    }
+  }
+}

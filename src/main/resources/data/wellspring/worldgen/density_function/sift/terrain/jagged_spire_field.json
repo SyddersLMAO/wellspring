@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:max",
+    "argument1": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:noise",
+        "noise": "wellspring:jagged_spire_a",
+        "xz_scale": 0.075,
+        "y_scale": 0.0
+      }
+    },
+    "argument2": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:noise",
+        "noise": "wellspring:jagged_spire_b",
+        "xz_scale": 0.061,
+        "y_scale": 0.0
+      }
+    }
+  }
+}

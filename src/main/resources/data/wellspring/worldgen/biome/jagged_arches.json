@@ -1,0 +1,28 @@
+{
+  "temperature": 0.65,
+  "downfall": 0.35,
+  "has_precipitation": true,
+  "effects": {
+    "water_color": 6463722,
+    "grass_color": 4708430,
+    "foliage_color": 5759881,
+    "dry_foliage_color": 13478799
+  },
+  "spawners": {
+    "ambient": [
+      {
+        "type": "wellspring:blub",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 80
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "features": []
+}

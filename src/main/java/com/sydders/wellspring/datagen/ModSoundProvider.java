@@ -35,5 +35,22 @@ public class ModSoundProvider extends SoundDefinitionsProvider {
                         sound("wellspring:entity/blub/death2")
                 )
         );
+
+        add("music.sift", SoundDefinition.definition()
+                .with(
+                        sound("wellspring:music/ambition").stream()
+                ));
+
+        add("music.sift.creative", SoundDefinition.definition()
+                .with(
+                        sound("wellspring:music/ambition").stream()
+                ));
+
+        add("ambient.sift.cave", SoundDefinition.definition()
+                .with(
+                        sound("wellspring:ambient/cave_1"),
+                        sound("wellspring:ambient/cave_2"),
+                        sound("wellspring:ambient/cave_3")
+                ));
     }
 }

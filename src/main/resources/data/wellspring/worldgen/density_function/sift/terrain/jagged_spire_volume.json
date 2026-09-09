@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "wellspring:sift/terrain/jagged_spire_field",
+  "min_inclusive": 0.0,
+  "max_exclusive": 0.048,
+  "when_in_range": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:add",
+          "argument1": 0.084,
+          "argument2": {
+            "type": "minecraft:mul",
+            "argument1": -1.0,
+            "argument2": "wellspring:sift/terrain/jagged_spire_field"
+          }
+        },
+        "argument2": {
+          "type": "minecraft:mul",
+          "argument1": 0.045,
+          "argument2": {
+            "type": "minecraft:noise",
+            "noise": "wellspring:jagged_height",
+            "xz_scale": 0.06,
+            "y_scale": 0.0
+          }
+        }
+      },
+      "argument2": {
+        "type": "minecraft:mul",
+        "argument1": 0.025,
+        "argument2": {
+          "type": "minecraft:noise",
+          "noise": "wellspring:jagged_overhang",
+          "xz_scale": 0.18,
+          "y_scale": 0.32
+        }
+      }
+    },
+    "argument2": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 68,
+      "to_y": 94,
+      "from_value": 0.0,
+      "to_value": -0.22
+    }
+  },
+  "when_out_of_range": -1.0
+}

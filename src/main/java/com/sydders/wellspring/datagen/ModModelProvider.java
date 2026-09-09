@@ -14,13 +14,23 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+
+import java.util.stream.Stream;
 
 public class ModModelProvider extends ModelProvider {
     public ModModelProvider(PackOutput output) {
         super(output, Wellspring.MODID);
+    }
+
+    @Override
+    protected Stream<? extends Holder<Item>> getKnownItems() {
+        return super.getKnownItems()
+                .filter(item -> item.value() != ModItems.BLUB_SPAWN_EGG.get());
     }
 
     @Override

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:max",
+  "argument1": "wellspring:sift/terrain/jagged_ground",
+  "argument2": {
+    "type": "minecraft:max",
+    "argument1": {
+      "type": "minecraft:max",
+      "argument1": "wellspring:sift/terrain/jagged_wall_blend",
+      "argument2": "wellspring:sift/terrain/jagged_arch_blend"
+    },
+    "argument2": "wellspring:sift/terrain/jagged_spire_blend"
+  }
+}

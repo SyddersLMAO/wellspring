@@ -1,6 +1,7 @@
 {
   "item.wellspring.ruby": "Ruby",
   "item.wellspring.warden_key":  "Warden Key",
+  "item.wellspring.blub_spawn_egg": "Blub Spawn Egg",
   "item.wellspring.raw_bazulium":  "Raw Bazulium",
   "item.wellspring.bazulium_ingot":  "Bazulium Ingot",
   "item.wellspring.bazulium_nugget":  "Bazulium Nugget",
@@ -38,5 +39,11 @@
   "block.wellspring.hardened_bazulium_ore": "Hardened Bazulium Ore",
   "block.wellspring.bazulium_block": "Bazulium Block",
 
-  "entity.wellspring.blub": "Blub"
+  "biome.wellspring.sift_plains": "Sift Plains",
+  "biome.wellspring.sift_forest": "Sift Forest",
+  "biome.wellspring.jagged_arches": "Jagged Arches",
+
+  "entity.wellspring.blub": "Blub",
+
+  "wellspring.music.ambition": "ZoharN - Ambition"
 }

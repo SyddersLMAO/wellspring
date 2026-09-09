@@ -1,8 +1,8 @@
 {
   "has_ender_dragon_fight": false,
-  "ambient_light": 0.0,
+  "ambient_light": 0,
   "cardinal_light": "default",
-  "coordinate_scale": 1.0,
+  "coordinate_scale": 1,
   "has_ceiling": false,
   "has_skylight": true,
   "height": 384,
@@ -20,8 +20,8 @@
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "block_search_extent": 8,
-        "offset": 2.0,
-        "sound": "minecraft:ambient.cave",
+        "offset": 2,
+        "sound": "wellspring:ambient.sift.cave",
         "tick_delay": 6000
       }
     },
@@ -29,12 +29,14 @@
       "creative": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.creative"
+        "sound": "wellspring:music.sift.creative",
+        "replace_current_music": false
       },
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.game"
+        "sound": "wellspring:music.sift",
+        "replace_current_music": true
       }
     },
     "minecraft:gameplay/bed_rule": {

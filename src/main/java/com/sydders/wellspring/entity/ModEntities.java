@@ -16,7 +16,7 @@ public class ModEntities {
             ENTITY_TYPES.registerEntityType(
                     "blub",
                     BlubEntity::new,
-                    MobCategory.CREATURE,
+                    MobCategory.AMBIENT,
                     builder -> builder
                             .sized(0.8f, 0.8f)
                             .clientTrackingRange(8)

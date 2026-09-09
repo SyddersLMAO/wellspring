@@ -1,11 +1,13 @@
 package com.sydders.wellspring.item;
 
 import com.sydders.wellspring.Wellspring;
+import com.sydders.wellspring.entity.ModEntities;
 import com.sydders.wellspring.item.custom.WardenKeyItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -16,6 +18,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> RUBY = ITEMS.registerSimpleItem("ruby");
     public static final DeferredItem<Item> WARDEN_KEY = ITEMS.registerItem("warden_key", WardenKeyItem::new);
+    public static final DeferredItem<SpawnEggItem> BLUB_SPAWN_EGG = ITEMS.registerItem("blub_spawn_egg",
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.BLUB.get())));
 
     public static final DeferredItem<Item> RAW_BAZULIUM = ITEMS.registerSimpleItem("raw_bazulium");
     public static final DeferredItem<Item> BAZULIUM_INGOT = ITEMS.registerSimpleItem("bazulium_ingot");
