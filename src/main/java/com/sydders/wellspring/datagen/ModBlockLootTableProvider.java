@@ -30,6 +30,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SIFT_STONE.get());
         dropSelf(ModBlocks.HARDENED_SIFT_STONE.get());
 
+        add(ModBlocks.SHORT_SIFT_GRASS.get(), noDrop());
+        add(ModBlocks.TALL_SIFT_GRASS.get(), noDrop());
+
         add(ModBlocks.SIFT_GRASS_BLOCK.get(),
                 createSilkTouchDispatchTable(
                         ModBlocks.SIFT_GRASS_BLOCK.get(),

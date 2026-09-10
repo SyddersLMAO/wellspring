@@ -9,8 +9,12 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -18,6 +22,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CountPlacement;
@@ -33,8 +38,10 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAZULIUM_ORE_KEY = registerKey("bazulium_ore");
 
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> WITHER_ROSE_KEY = registerKey("wither_rose");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SIFT_GRASS_KEY = registerKey("sift_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SIFT_GRASS_KEY = registerKey("tall_sift_grass");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, SIFT_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -71,7 +78,43 @@ public class ModConfiguredFeatures {
                                 CountPlacement.of(32),
                                 RandomOffsetPlacement.ofTriangle(6, 3),
                                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)))));
-        
+
+        WeightedList.Builder<BlockState> siftGrassStates = WeightedList.builder();
+
+        siftGrassStates.add(
+                ModBlocks.SHORT_SIFT_GRASS.get().defaultBlockState(),
+                4
+        );
+
+        siftGrassStates.add(
+                ModBlocks.TALL_SIFT_GRASS.get()
+                        .defaultBlockState()
+                        .setValue(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER),
+                1
+        );
+
+        register(
+                context,
+                SIFT_GRASS_KEY,
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(
+                        BlockStateProvider.simple(
+                                ModBlocks.SHORT_SIFT_GRASS.get().defaultBlockState()
+                        )
+                )
+        );
+
+        register(
+                context,
+                TALL_SIFT_GRASS_KEY,
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(
+                        BlockStateProvider.simple(
+                                ModBlocks.TALL_SIFT_GRASS.get().defaultBlockState()
+                        )
+                )
+        );
+
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

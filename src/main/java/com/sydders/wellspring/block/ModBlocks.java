@@ -31,15 +31,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RED_SCULK = registerBlock("red_sculk",
             properties -> new Block(properties.strength(1f)
                     .sound(SoundType.SCULK).mapColor(MapColor.TERRACOTTA_RED)));
-    public static final DeferredBlock<Block> SIFT_STONE = registerBlock("sift_stone",
-            properties -> new Block(properties.strength(2f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_ORANGE)));
-    public static final DeferredBlock<Block> HARDENED_SIFT_STONE = registerBlock("hardened_sift_stone",
-            properties -> new Block(properties.strength(2.5f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
     public static final DeferredBlock<Block> SIFT_GRASS_BLOCK = registerBlock("sift_grass_block",
         properties -> new Block(properties.strength(1f)
                 .sound(SoundType.GRASS).mapColor(MapColor.TERRACOTTA_LIGHT_GREEN)));
+    public static final DeferredBlock<Block> SHORT_SIFT_GRASS = registerBlock("short_sift_grass",
+            properties -> new TallGrassBlock(properties.mapColor(MapColor.PLANT)
+                    .replaceable().noCollision().instabreak().sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> TALL_SIFT_GRASS = registerBlock("tall_sift_grass",
+            properties -> new DoublePlantBlock(properties.mapColor(MapColor.PLANT)
+                    .replaceable().noCollision().instabreak().sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> SIFT_PORTAL = BLOCKS.registerBlock("sift_portal",
             properties -> new SiftPortalBlock(properties.noCollision()
                     .strength(-1.0F)
@@ -48,6 +50,13 @@ public class ModBlocks {
                     .noLootTable()
                     .pushReaction(PushReaction.BLOCK)));
 
+
+    public static final DeferredBlock<Block> SIFT_STONE = registerBlock("sift_stone",
+            properties -> new Block(properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<Block> HARDENED_SIFT_STONE = registerBlock("hardened_sift_stone",
+            properties -> new Block(properties.strength(2.5f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
 
     public static final DeferredBlock<Block> SIFT_LOG = registerBlock("sift_log",
             properties -> new ModFlammableRotatedPillarBlock(

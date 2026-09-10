@@ -25,7 +25,7 @@ public class BlockColorRegister {
                         new BlockTintSource() {
                             @Override
                             public int color(BlockState state) {
-                                return GrassColor.getDefaultColor(); // fallback, no world context
+                                return GrassColor.getDefaultColor();
                             }
 
                             @Override
@@ -34,7 +34,9 @@ public class BlockColorRegister {
                             }
                         }
                 ),
-                ModBlocks.SIFT_GRASS_BLOCK.get()
+                ModBlocks.SIFT_GRASS_BLOCK.get(),
+                ModBlocks.SHORT_SIFT_GRASS.get(),
+                ModBlocks.TALL_SIFT_GRASS.get()
         );
     }
 }

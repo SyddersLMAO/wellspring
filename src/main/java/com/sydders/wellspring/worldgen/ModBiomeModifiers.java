@@ -24,6 +24,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BLUB_SPAWNS = registerKey("add_blub_spawns");
     public static final ResourceKey<BiomeModifier> ADD_BAZULIUM_ORE = registerKey("add_bazulium_ore");
     public static final ResourceKey<BiomeModifier> ADD_WITHER_ROSE = registerKey("add_wither_rose");
+    public static final ResourceKey<BiomeModifier> ADD_SIFT_GRASS = registerKey("add_sift_grass");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -72,6 +73,18 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(ModTags.Biomes.IS_WITHERED),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WITHER_ROSE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(
+                ADD_SIFT_GRASS,
+                new BiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(ModTags.Biomes.IS_SIFT),
+                        HolderSet.direct(
+                                placedFeatures.getOrThrow(ModPlacedFeatures.SIFT_GRASS_PLACED_KEY),
+                                placedFeatures.getOrThrow(ModPlacedFeatures.TALL_SIFT_GRASS_PLACED_KEY)
+                        ),
+                        GenerationStep.Decoration.VEGETAL_DECORATION
+                )
+        );
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

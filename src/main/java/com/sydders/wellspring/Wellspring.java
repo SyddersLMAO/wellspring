@@ -117,6 +117,8 @@ public class Wellspring {
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.SHORT_SIFT_GRASS);
+            event.accept(ModBlocks.TALL_SIFT_GRASS);
             event.accept(ModBlocks.SIFT_SAPLING);
             event.accept(ModBlocks.WITHERED_SAPLING);
             event.accept(ModBlocks.BAZULIUM_ORE);

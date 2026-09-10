@@ -58,6 +58,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.RED_SCULK.get());
         blockModels.createTrivialCube(ModBlocks.SIFT_STONE.get());
         blockModels.createTrivialCube(ModBlocks.HARDENED_SIFT_STONE.get());
+        blockModels.createCrossBlock(ModBlocks.SHORT_SIFT_GRASS.get(), BlockModelGenerators.PlantType.TINTED);
+        blockModels.createItemWithGrassTint(ModBlocks.SHORT_SIFT_GRASS.get());
+        blockModels.createTintedDoublePlant(ModBlocks.TALL_SIFT_GRASS.get());
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.dispatch(ModBlocks.SIFT_PORTAL.get())
                         .with(PropertyDispatch.initial(SiftPortalBlock.AXIS)
