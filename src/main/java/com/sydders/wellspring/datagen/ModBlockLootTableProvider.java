@@ -27,8 +27,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.RED_SCULK.get());
+
         dropSelf(ModBlocks.SIFT_STONE.get());
+        dropSelf(ModBlocks.SIFT_STONE_STAIRS.get());
+        dropSelf(ModBlocks.SIFT_STONE_SLAB.get());
+        dropSelf(ModBlocks.SIFT_STONE_WALL.get());
         dropSelf(ModBlocks.HARDENED_SIFT_STONE.get());
+        dropSelf(ModBlocks.HARDENED_SIFT_STONE_STAIRS.get());
+        dropSelf(ModBlocks.HARDENED_SIFT_STONE_SLAB.get());
+        dropSelf(ModBlocks.HARDENED_SIFT_STONE_WALL.get());
 
         add(ModBlocks.SHORT_SIFT_GRASS.get(), noDrop());
         add(ModBlocks.TALL_SIFT_GRASS.get(), noDrop());

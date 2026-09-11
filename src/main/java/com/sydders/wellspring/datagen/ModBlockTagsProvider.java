@@ -25,7 +25,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.SIFT_STONE.get())
+                .add(ModBlocks.SIFT_STONE_STAIRS.get())
+                .add(ModBlocks.SIFT_STONE_SLAB.get())
+                .add(ModBlocks.SIFT_STONE_WALL.get())
                 .add(ModBlocks.HARDENED_SIFT_STONE.get())
+                .add(ModBlocks.HARDENED_SIFT_STONE_STAIRS.get())
+                .add(ModBlocks.HARDENED_SIFT_STONE_SLAB.get())
+                .add(ModBlocks.HARDENED_SIFT_STONE_WALL.get())
                 .add(ModBlocks.SIFT_GRASS_BLOCK.get())
                 .add(ModBlocks.BAZULIUM_ORE.get())
                 .add(ModBlocks.HARDENED_BAZULIUM_ORE.get());

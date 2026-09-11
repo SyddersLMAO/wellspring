@@ -86,6 +86,16 @@ public class Wellspring {
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.SIFT_STONE);
+            event.accept(ModBlocks.SIFT_STONE_STAIRS);
+            event.accept(ModBlocks.SIFT_STONE_SLAB);
+            event.accept(ModBlocks.SIFT_STONE_WALL);
+
+            event.accept(ModBlocks.HARDENED_SIFT_STONE);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_STAIRS);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_SLAB);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_WALL);
+
             event.accept(ModBlocks.SIFT_LOG);
             event.accept(ModBlocks.SIFT_WOOD);
             event.accept(ModBlocks.STRIPPED_SIFT_LOG);

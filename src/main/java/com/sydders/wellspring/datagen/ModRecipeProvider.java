@@ -37,13 +37,32 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE.get())
-                .pattern("SSS")
-                .pattern("SSS")
-                .pattern("SSS")
+                .pattern("SS")
+                .pattern("SS")
                 .define('S', ModBlocks.SIFT_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
                 .group("hardened_sift_stone")
                 .save(output);
+
+        stairBuilder(ModBlocks.SIFT_STONE_STAIRS.get(), Ingredient.of(ModBlocks.SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
+                .group("stone_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_STONE_SLAB.get(), Ingredient.of(ModBlocks.SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
+                .group("stone_slab").save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_STONE_WALL.get(), Ingredient.of(ModBlocks.SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
+                .group("stone_wall").save(output);
+
+        stairBuilder(ModBlocks.HARDENED_SIFT_STONE_STAIRS.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
+                .group("stone_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_SLAB.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
+                .group("stone_slab").save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_WALL.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
+                .group("stone_wall").save(output);
 
         woodFromLogs(ModBlocks.SIFT_WOOD.get(), ModBlocks.SIFT_LOG);
         woodFromLogs(ModBlocks.STRIPPED_SIFT_WOOD.get(), ModBlocks.STRIPPED_SIFT_LOG);
