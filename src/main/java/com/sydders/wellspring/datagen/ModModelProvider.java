@@ -61,10 +61,21 @@ public class ModModelProvider extends ModelProvider {
                 .stairs(ModBlocks.SIFT_STONE_STAIRS.get())
                 .slab(ModBlocks.SIFT_STONE_SLAB.get())
                 .wall(ModBlocks.SIFT_STONE_WALL.get());
+
+        blockModels.family(ModBlocks.SIFT_STONE_BRICKS.get())
+                .stairs(ModBlocks.SIFT_STONE_BRICKS_STAIRS.get())
+                .slab(ModBlocks.SIFT_STONE_BRICKS_SLAB.get())
+                .wall(ModBlocks.SIFT_STONE_BRICKS_WALL.get());
+
         blockModels.family(ModBlocks.HARDENED_SIFT_STONE.get())
                 .stairs(ModBlocks.HARDENED_SIFT_STONE_STAIRS.get())
                 .slab(ModBlocks.HARDENED_SIFT_STONE_SLAB.get())
                 .wall(ModBlocks.HARDENED_SIFT_STONE_WALL.get());
+
+        blockModels.family(ModBlocks.HARDENED_SIFT_STONE_BRICKS.get())
+                .stairs(ModBlocks.HARDENED_SIFT_STONE_BRICKS_STAIRS.get())
+                .slab(ModBlocks.HARDENED_SIFT_STONE_BRICKS_SLAB.get())
+                .wall(ModBlocks.HARDENED_SIFT_STONE_BRICKS_WALL.get());
 
 
         blockModels.createCrossBlock(ModBlocks.SHORT_SIFT_GRASS.get(), BlockModelGenerators.PlantType.TINTED);

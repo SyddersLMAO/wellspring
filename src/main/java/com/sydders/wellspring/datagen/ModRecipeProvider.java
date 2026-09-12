@@ -54,6 +54,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
                 .group("stone_wall").save(output);
 
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_STONE_BRICKS.get())
+                .pattern("SS")
+                .pattern("SS")
+                .define('S', ModBlocks.SIFT_STONE.get())
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE.get()), has(ModBlocks.SIFT_STONE))
+                .group("sift_stone_bricks")
+                .save(output);
+        stairBuilder(ModBlocks.SIFT_STONE_BRICKS_STAIRS.get(), Ingredient.of(ModBlocks.SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE_BRICKS.get()), has(ModBlocks.SIFT_STONE_BRICKS))
+                .group("stone_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_STONE_BRICKS_SLAB.get(), Ingredient.of(ModBlocks.SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE_BRICKS.get()), has(ModBlocks.SIFT_STONE_BRICKS))
+                .group("stone_slab").save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIFT_STONE_BRICKS_WALL.get(), Ingredient.of(ModBlocks.SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.SIFT_STONE_BRICKS.get()), has(ModBlocks.SIFT_STONE_BRICKS))
+                .group("stone_wall").save(output);
+
         stairBuilder(ModBlocks.HARDENED_SIFT_STONE_STAIRS.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE))
                 .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
                 .group("stone_stairs").save(output);
@@ -62,6 +79,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("stone_slab").save(output);
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_WALL.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE))
                 .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
+                .group("stone_wall").save(output);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_BRICKS.get())
+                .pattern("SS")
+                .pattern("SS")
+                .define('S', ModBlocks.HARDENED_SIFT_STONE.get())
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE.get()), has(ModBlocks.HARDENED_SIFT_STONE))
+                .group("sift_stone_bricks")
+                .save(output);
+        stairBuilder(ModBlocks.HARDENED_SIFT_STONE_BRICKS_STAIRS.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE_BRICKS.get()), has(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
+                .group("stone_stairs").save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_BRICKS_SLAB.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE_BRICKS.get()), has(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
+                .group("stone_slab").save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HARDENED_SIFT_STONE_BRICKS_WALL.get(), Ingredient.of(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.HARDENED_SIFT_STONE_BRICKS.get()), has(ModBlocks.HARDENED_SIFT_STONE_BRICKS))
                 .group("stone_wall").save(output);
 
         woodFromLogs(ModBlocks.SIFT_WOOD.get(), ModBlocks.SIFT_LOG);

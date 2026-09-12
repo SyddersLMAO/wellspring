@@ -65,16 +65,42 @@ public class ModBlocks {
             properties -> new WallBlock(properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
 
+    public static final DeferredBlock<Block> SIFT_STONE_BRICKS = registerBlock("sift_stone_bricks",
+            properties -> new Block(properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<StairBlock> SIFT_STONE_BRICKS_STAIRS = registerBlock("sift_stone_bricks_stairs",
+            properties -> new StairBlock(ModBlocks.SIFT_STONE_BRICKS.get().defaultBlockState(), properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<Block> SIFT_STONE_BRICKS_SLAB = registerBlock("sift_stone_bricks_slab",
+            properties -> new SlabBlock(properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<Block> SIFT_STONE_BRICKS_WALL = registerBlock("sift_stone_bricks_wall",
+            properties -> new WallBlock(properties.strength(2f).mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+
     public static final DeferredBlock<Block> HARDENED_SIFT_STONE = registerBlock("hardened_sift_stone",
             properties -> new Block(properties.strength(2.5f).requiresCorrectToolForDrops()
                     .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
-    public static final DeferredBlock<StairBlock> HARDENED_SIFT_STONE_STAIRS = registerBlock("hardenedsift_stone_stairs",
+    public static final DeferredBlock<StairBlock> HARDENED_SIFT_STONE_STAIRS = registerBlock("hardened_sift_stone_stairs",
             properties -> new StairBlock(ModBlocks.HARDENED_SIFT_STONE.get().defaultBlockState(), properties.strength(2f).mapColor(MapColor.TERRACOTTA_RED)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final DeferredBlock<Block> HARDENED_SIFT_STONE_SLAB = registerBlock("hardened_sift_stone_slab",
             properties -> new SlabBlock(properties.strength(2.5f).mapColor(MapColor.TERRACOTTA_RED)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
     public static final DeferredBlock<Block> HARDENED_SIFT_STONE_WALL = registerBlock("hardened_sift_stone_wall",
+            properties -> new WallBlock(properties.strength(2.5f).mapColor(MapColor.TERRACOTTA_RED)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+
+    public static final DeferredBlock<Block> HARDENED_SIFT_STONE_BRICKS = registerBlock("hardened_sift_stone_bricks",
+            properties -> new Block(properties.strength(2.5f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE).mapColor(MapColor.TERRACOTTA_RED)));
+    public static final DeferredBlock<StairBlock> HARDENED_SIFT_STONE_BRICKS_STAIRS = registerBlock("hardened_sift_stone_bricks_stairs",
+            properties -> new StairBlock(ModBlocks.HARDENED_SIFT_STONE_BRICKS.get().defaultBlockState(), properties.strength(2f).mapColor(MapColor.TERRACOTTA_RED)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<Block> HARDENED_SIFT_STONE_BRICKS_SLAB = registerBlock("hardened_sift_stone_bricks_slab",
+            properties -> new SlabBlock(properties.strength(2.5f).mapColor(MapColor.TERRACOTTA_RED)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final DeferredBlock<Block> HARDENED_SIFT_STONE_BRICKS_WALL = registerBlock("hardened_sift_stone_bricks_wall",
             properties -> new WallBlock(properties.strength(2.5f).mapColor(MapColor.TERRACOTTA_RED)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
 

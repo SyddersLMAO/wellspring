@@ -91,10 +91,20 @@ public class Wellspring {
             event.accept(ModBlocks.SIFT_STONE_SLAB);
             event.accept(ModBlocks.SIFT_STONE_WALL);
 
+            event.accept(ModBlocks.SIFT_STONE_BRICKS);
+            event.accept(ModBlocks.SIFT_STONE_BRICKS_STAIRS);
+            event.accept(ModBlocks.SIFT_STONE_BRICKS_SLAB);
+            event.accept(ModBlocks.SIFT_STONE_BRICKS_WALL);
+
             event.accept(ModBlocks.HARDENED_SIFT_STONE);
             event.accept(ModBlocks.HARDENED_SIFT_STONE_STAIRS);
             event.accept(ModBlocks.HARDENED_SIFT_STONE_SLAB);
             event.accept(ModBlocks.HARDENED_SIFT_STONE_WALL);
+
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_BRICKS);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_BRICKS_STAIRS);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_BRICKS_SLAB);
+            event.accept(ModBlocks.HARDENED_SIFT_STONE_BRICKS_WALL);
 
             event.accept(ModBlocks.SIFT_LOG);
             event.accept(ModBlocks.SIFT_WOOD);
