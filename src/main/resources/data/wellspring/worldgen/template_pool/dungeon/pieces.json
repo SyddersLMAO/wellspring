@@ -1,0 +1,51 @@
+{
+  "name": "wellspring:pieces",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 70,
+      "element": {
+        "location": "wellspring:dungeon/left_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 70,
+      "element": {
+        "location": "wellspring:dungeon/right_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 70,
+      "element": {
+        "location": "wellspring:dungeon/stairs",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "wellspring:dungeon/t_junction",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 30,
+      "element": {
+        "location": "wellspring:dungeon/square_room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

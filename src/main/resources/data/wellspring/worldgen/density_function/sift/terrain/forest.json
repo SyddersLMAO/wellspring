@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:mul",
+    "argument1": "wellspring:sift/terrain/forest_weight",
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": 0.12,
+          "argument2": {
+            "type": "minecraft:square",
+            "argument": {
+              "type": "minecraft:abs",
+              "argument": {
+                "type": "minecraft:noise",
+                "noise": "wellspring:mountain_shape",
+                "xz_scale": 0.018,
+                "y_scale": 0.0
+              }
+            }
+          }
+        },
+        "argument2": {
+          "type": "minecraft:mul",
+          "argument1": 0.04,
+          "argument2": {
+            "type": "minecraft:noise",
+            "noise": "wellspring:forest_detail",
+            "xz_scale": 0.045,
+            "y_scale": 0.0
+          }
+        }
+      },
+      "argument2": {
+        "type": "minecraft:mul",
+        "argument1": 0.018,
+        "argument2": {
+          "type": "minecraft:noise",
+          "noise": "wellspring:plains_detail",
+          "xz_scale": 0.11,
+          "y_scale": 0.0
+        }
+      }
+    }
+  }
+}

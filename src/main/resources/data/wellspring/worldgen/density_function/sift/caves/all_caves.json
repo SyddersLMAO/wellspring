@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:min",
+  "argument1": "wellspring:sift/caves/giant_caverns",
+  "argument2": {
+    "type": "minecraft:min",
+    "argument1": "wellspring:sift/caves/hardened_caverns",
+    "argument2": {
+      "type": "minecraft:min",
+      "argument1": {
+        "type": "minecraft:range_choice",
+        "input": "minecraft:y",
+        "min_inclusive": -10,
+        "max_exclusive": 20,
+        "when_in_range": "wellspring:sift/caves/cavern_connectors",
+        "when_out_of_range": 1
+      },
+      "argument2": {
+        "type": "minecraft:min",
+        "argument1": {
+          "type": "minecraft:range_choice",
+          "input": "minecraft:y",
+          "min_inclusive": 8,
+          "max_exclusive": 128,
+          "when_in_range": "wellspring:sift/caves/surface_shafts",
+          "when_out_of_range": 1
+        },
+        "argument2": {
+          "type": "minecraft:range_choice",
+          "input": "minecraft:y",
+          "min_inclusive": -48,
+          "max_exclusive": 128,
+          "when_in_range": "wellspring:sift/caves/small_surface_shafts",
+          "when_out_of_range": 1
+        }
+      }
+    }
+  }
+}

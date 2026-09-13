@@ -65,6 +65,7 @@ neoForge {
         gameTestServer {
             type = "gameTestServer"
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '--packs', file('src/test/resources').absolutePath
         }
 
         data {

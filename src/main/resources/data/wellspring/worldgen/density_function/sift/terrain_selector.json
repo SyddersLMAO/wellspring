@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:noise",
+    "noise": "wellspring:terrain_selector",
+    "xz_scale": 0.025,
+    "y_scale": 0
+  }
+}

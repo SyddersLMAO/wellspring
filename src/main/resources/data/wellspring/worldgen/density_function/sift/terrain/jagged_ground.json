@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": "wellspring:sift/terrain/plains",
+      "argument2": "wellspring:sift/terrain/forest"
+    },
+    "argument2": "wellspring:sift/terrain/jagged_ground_roughness"
+  },
+  "argument2": "wellspring:sift/terrain/jagged_pool_basin"
+}

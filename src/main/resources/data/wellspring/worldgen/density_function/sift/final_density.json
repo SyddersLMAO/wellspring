@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:min",
+  "argument1": "wellspring:sift/terrain/surface",
+  "argument2": "wellspring:sift/caves/all_caves"
+}

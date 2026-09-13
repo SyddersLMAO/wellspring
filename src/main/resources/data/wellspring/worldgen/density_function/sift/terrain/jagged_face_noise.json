@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:mul",
+  "argument1": "wellspring:sift/terrain/jagged_wall_presence",
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.05,
+    "argument2": {
+      "type": "minecraft:noise",
+      "noise": "wellspring:jagged_overhang",
+      "xz_scale": 0.24,
+      "y_scale": 0.36
+    }
+  }
+}

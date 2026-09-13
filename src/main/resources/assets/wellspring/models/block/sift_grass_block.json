@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "wellspring:block/sift_grass_top",
+    "bottom": "wellspring:block/sift_stone",
+    "side": "wellspring:block/sift_grass_side",
+    "top": "wellspring:block/sift_grass_top",
+    "overlay": "wellspring:block/sift_grass_overlay"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down":  { "texture": "#bottom", "cullface": "down" },
+        "up":    { "texture": "#top", "cullface": "up", "tintindex": 0 },
+        "north": { "texture": "#side", "cullface": "north" },
+        "south": { "texture": "#side", "cullface": "south" },
+        "east":  { "texture": "#side", "cullface": "east" },
+        "west":  { "texture": "#side", "cullface": "west" }
+      }
+    },
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": { "texture": "#overlay", "cullface": "north", "tintindex": 0 },
+        "south": { "texture": "#overlay", "cullface": "south", "tintindex": 0 },
+        "east":  { "texture": "#overlay", "cullface": "east", "tintindex": 0 },
+        "west":  { "texture": "#overlay", "cullface": "west", "tintindex": 0 }
+      }
+    }
+  ]
+}

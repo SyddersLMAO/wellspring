@@ -1,0 +1,102 @@
+{
+  "type": "minecraft:max",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:noise",
+          "noise": "wellspring:hardened_caverns",
+          "xz_scale": 0.03,
+          "y_scale": 0.045
+        },
+        "argument2": -0.04
+      }
+    },
+    "argument2": -0.24
+  },
+  "argument2": {
+    "type": "minecraft:max",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:y_clamped_gradient",
+        "from_y": -60,
+        "to_y": -32,
+        "from_value": 0.55,
+        "to_value": -0.55
+      },
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": 0.26,
+          "argument2": {
+            "type": "minecraft:noise",
+            "noise": "wellspring:hardened_cavern_floor",
+            "xz_scale": 0.032,
+            "y_scale": 0.0
+          }
+        },
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": {
+            "type": "minecraft:mul",
+            "argument1": 0.06,
+            "argument2": {
+              "type": "minecraft:noise",
+              "noise": "wellspring:hardened_cavern_floor_detail",
+              "xz_scale": 0.08,
+              "y_scale": 0.0
+            }
+          },
+          "argument2": {
+            "type": "minecraft:add",
+            "argument1": {
+              "type": "minecraft:mul",
+              "argument1": 0.045,
+              "argument2": {
+                "type": "minecraft:noise",
+                "noise": "wellspring:hardened_cavern_floor_top",
+                "xz_scale": 0.18,
+                "y_scale": 0.0
+              }
+            },
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": 0.02,
+              "argument2": {
+                "type": "minecraft:noise",
+                "noise": "wellspring:hardened_cavern_floor_grit",
+                "xz_scale": 0.15,
+                "y_scale": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:y_clamped_gradient",
+        "from_y": -6,
+        "to_y": 14,
+        "from_value": -0.45,
+        "to_value": 0.45
+      },
+      "argument2": {
+        "type": "minecraft:mul",
+        "argument1": 0.2,
+        "argument2": {
+          "type": "minecraft:noise",
+          "noise": "wellspring:hardened_cavern_ceiling",
+          "xz_scale": 0.055,
+          "y_scale": 0.0
+        }
+      }
+    }
+  }
+}
