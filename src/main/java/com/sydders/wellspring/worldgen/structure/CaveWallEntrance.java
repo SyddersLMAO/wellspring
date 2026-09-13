@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
-/** Terrain checks for the anchor template's five-block-wide, five-block-high doorway. */
 final class CaveWallEntrance {
     private CaveWallEntrance() {
     }
@@ -24,7 +23,6 @@ final class CaveWallEntrance {
     static boolean fits(Terrain terrain, BlockPos floor, Direction outward) {
         Direction sideways = outward.getClockWise();
 
-        // The outside must be a walkable approach, not a small air pocket or a fluid cavity.
         for (int depth = 1; depth <= 3; depth++) {
             for (int width = -2; width <= 2; width++) {
                 BlockPos approach = floor.relative(outward, depth).relative(sideways, width);
@@ -39,7 +37,6 @@ final class CaveWallEntrance {
             }
         }
 
-        // Embed the back half of the 7 x 7 x 9 anchor in the wall.
         for (int depth : new int[]{4, 8}) {
             for (int width : new int[]{-3, 0, 3}) {
                 for (int height : new int[]{1, 3, 5}) {

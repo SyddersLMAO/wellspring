@@ -25,7 +25,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Consumer;
 
-/** Registered only in development; run with the GameTestServer configuration. */
 public final class DungeonGameTests {
     private static final DeferredRegister<Consumer<GameTestHelper>> FUNCTIONS =
             DeferredRegister.create(BuiltInRegistries.TEST_FUNCTION, Wellspring.MODID);
@@ -117,7 +116,6 @@ public final class DungeonGameTests {
         helper.assertTrue(CaveWallEntrance.fits(level::getBlockState, stub.position(), outward),
                 "Predicted wall does not match generated Sift terrain");
 
-        // Exercise actual placement across chunk boundaries, not just selection against noise.
         for (var piece : pieces) {
             var box = piece.getBoundingBox();
             for (int x = Math.floorDiv(box.minX(), 16); x <= Math.floorDiv(box.maxX(), 16); x++) {

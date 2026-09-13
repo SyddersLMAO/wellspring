@@ -74,7 +74,6 @@ public class CaveWallDungeonStructure extends Structure {
             return Optional.empty();
         }
 
-        // Let vanilla assemble and rotate the rooms, then move the entire connected layout.
         BlockPos provisionalStart = context.chunkPos().getMiddleBlockPosition((lowestFloor + highestFloor) / 2);
         Optional<GenerationStub> layout = JigsawPlacement.addPieces(context, startPool, Optional.of(entranceJigsaw),
                 size, provisionalStart, false, Optional.empty(), new JigsawStructure.MaxDistance(maxDistance),
@@ -99,10 +98,8 @@ public class CaveWallDungeonStructure extends Structure {
         BlockPos oldFloor = entrance.get().info().pos();
         var approachBox = CaveWallEntrance.approachBox(oldFloor, outward);
         if (pieces.build().pieces().stream().anyMatch(piece -> piece.getBoundingBox().intersects(approachBox))) {
-            // A branching hallway may loop around the anchor. Keep the outside approach open.
             return Optional.empty();
         }
-        // Also keep every room inside the dimension after translation.
         lowestFloor = Math.max(lowestFloor, oldFloor.getY() + context.heightAccessor().getMinY() - pieces.getBoundingBox().minY());
         highestFloor = Math.min(highestFloor, oldFloor.getY() + context.heightAccessor().getMaxY() - pieces.getBoundingBox().maxY());
 
@@ -125,8 +122,6 @@ public class CaveWallDungeonStructure extends Structure {
     }
 
     private Optional<BlockPos> findEntrance(GenerationContext context, Direction outward, int lowestFloor, int highestFloor) {
-        // Sampling the generator avoids loading neighboring chunks during STRUCTURE_STARTS.
-        // Cache columns only for this attempt; a seed or dimension must never share the cache.
         Map<Long, NoiseColumn> columns = new HashMap<>();
         CaveWallEntrance.Terrain terrain = pos -> columns.computeIfAbsent(((long) pos.getX() << 32) ^ (pos.getZ() & 0xffffffffL),
                 key -> context.chunkGenerator().getBaseColumn(pos.getX(), pos.getZ(), context.heightAccessor(), context.randomState()))
