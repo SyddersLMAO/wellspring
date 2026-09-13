@@ -25,11 +25,35 @@ public class WellspringDatagen {
         generator.addProvider(true, new ModModelProvider(packOutput));
         generator.addProvider(true, new ModBlockTagsProvider(packOutput, lookupProvider));
         generator.addProvider(true, new ModBiomeTagsProvider(packOutput, lookupProvider));
-        generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(
-                        new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK),
-                        new LootTableProvider.SubProviderEntry(registries -> new ModChestLootTableProvider(), LootContextParamSets.CHEST)
-                ), lookupProvider));
+        generator.addProvider(
+                true,
+                new LootTableProvider(
+                        packOutput,
+                        Collections.emptySet(),
+                        List.of(
+                                new LootTableProvider.SubProviderEntry(
+                                        ModBlockLootTableProvider::new,
+                                        LootContextParamSets.BLOCK
+                                ),
+
+                                new LootTableProvider.SubProviderEntry(
+                                        registries -> new ModChestLootTableProvider(),
+                                        LootContextParamSets.CHEST
+                                ),
+
+                                new LootTableProvider.SubProviderEntry(
+                                        ModEntityLootTableProvider::new,
+                                        LootContextParamSets.ENTITY
+                                ),
+
+                                new LootTableProvider.SubProviderEntry(
+                                        ModLootTables::new,
+                                        LootContextParamSets.ENTITY
+                                )
+                        ),
+                        lookupProvider
+                )
+        );
 
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput, lookupProvider));
         generator.addProvider(true, new ModDataMapProvider(packOutput, lookupProvider));
@@ -40,5 +64,7 @@ public class WellspringDatagen {
         generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
 
         generator.addProvider(true, new ModSoundProvider(packOutput));
+
+        generator.addProvider(true, new ModGlobalLootModifierProvider(packOutput, lookupProvider));
     }
 }
