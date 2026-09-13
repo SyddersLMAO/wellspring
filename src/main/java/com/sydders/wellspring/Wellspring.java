@@ -8,6 +8,8 @@ import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.portal.SiftTeleporter;
 import com.sydders.wellspring.sound.ModSounds;
 import com.sydders.wellspring.worldgen.tree.ModTrunkPlacerTypes;
+import com.sydders.wellspring.worldgen.structure.ModStructureTypes;
+import com.sydders.wellspring.worldgen.structure.DungeonGameTests;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -58,6 +60,10 @@ public class Wellspring {
 
         // Register worldgen types
         ModTrunkPlacerTypes.register(modEventBus);
+        ModStructureTypes.register(modEventBus);
+        if (!net.neoforged.fml.loading.FMLEnvironment.isProduction()) {
+            DungeonGameTests.register(modEventBus);
+        }
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Wellspring) to respond directly to events.
