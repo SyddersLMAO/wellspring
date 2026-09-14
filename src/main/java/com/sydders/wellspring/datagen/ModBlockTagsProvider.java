@@ -21,7 +21,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
                 .add(ModBlocks.SIFT_PLANKS_SLAB.get())
                 .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
-                .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get())
+                .add(ModBlocks.WITHERED_STAIRS.get())
+                .add(ModBlocks.WITHERED_SLAB.get())
+                .add(ModBlocks.WITHERED_PRESSURE_PLATE.get())
+                .add(ModBlocks.WITHERED_BUTTON.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.SIFT_STONE.get())
