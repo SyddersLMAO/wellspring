@@ -149,5 +149,21 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.HARDENED_BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_BLOCK.get());
+
+        var crotonModel = BlockModelGenerators.plainModel(
+                ModelLocationUtils.getModelLocation(ModBlocks.CROTON.get())
+        );
+
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(
+                        ModBlocks.CROTON.get(),
+                        BlockModelGenerators.variants(
+                                crotonModel,
+                                BlockModelGenerators.Y_ROT_90.apply(crotonModel),
+                                BlockModelGenerators.Y_ROT_180.apply(crotonModel),
+                                BlockModelGenerators.Y_ROT_270.apply(crotonModel)
+                        )
+                )
+        );
     }
 }

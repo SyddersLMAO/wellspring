@@ -102,6 +102,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.HARDENED_BAZULIUM_ORE.get(),
                 createOreDrop(ModBlocks.HARDENED_BAZULIUM_ORE.get(), ModItems.RAW_BAZULIUM.get()));
         dropSelf(ModBlocks.BAZULIUM_BLOCK.get());
+
+        dropSelf(ModBlocks.CROTON.get());
     }
 
     protected LootTable.Builder createOreDrops(Block block, Item item, float minDrops, float maxDrops) {

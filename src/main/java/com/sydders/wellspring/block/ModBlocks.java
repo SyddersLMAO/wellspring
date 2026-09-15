@@ -268,6 +268,10 @@ public class ModBlocks {
         properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops()
                 .sound(SoundType.METAL).mapColor(MapColor.TERRACOTTA_PINK)));
 
+    public static final DeferredBlock<TallGrassBlock> CROTON = registerBlock("croton",
+            properties -> new TallGrassBlock(properties.instabreak().sound(SoundType.FLOWERING_AZALEA)
+                    .noCollision().offsetType(BlockBehaviour.OffsetType.XZ)));
+
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
