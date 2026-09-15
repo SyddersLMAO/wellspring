@@ -76,5 +76,10 @@
 
   "entity.wellspring.blub": "Blub",
 
-  "wellspring.music.ambition": "ZoharN - Ambition"
+  "wellspring.music.ambition": "ZoharN - Ambition",
+
+  "advancements.sift.root.title": "Sift",
+  "advancements.sift.root.description": "Enter the Sift dimension.",
+  "advancements.sift.sift_biomes.title": "Siftseeing",
+  "advancements.sift.sift_biomes.description": "Visit every biome in the Sift."
 }
