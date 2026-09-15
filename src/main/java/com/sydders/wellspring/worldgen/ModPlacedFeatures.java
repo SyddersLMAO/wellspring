@@ -25,6 +25,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BAZULIUM_ORE_PLACED_KEY = registerKey("bazulium_ore_placed");
 
     public static final ResourceKey<PlacedFeature> WITHER_ROSE_PLACED_KEY = registerKey("wither_rose_placed");
+    public static final ResourceKey<PlacedFeature> CROTON_PLACED_KEY = registerKey("croton_placed");
 
     public static final ResourceKey<PlacedFeature> SIFT_GRASS_PLACED_KEY = registerKey("sift_grass_placed");
     public static final ResourceKey<PlacedFeature> TALL_SIFT_GRASS_PLACED_KEY = registerKey("tall_sift_grass_placed");
@@ -51,6 +52,8 @@ public class ModPlacedFeatures {
 
         register(context, WITHER_ROSE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITHER_ROSE_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+        register(context, CROTON_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CROTON_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
 
         register(
                 context,

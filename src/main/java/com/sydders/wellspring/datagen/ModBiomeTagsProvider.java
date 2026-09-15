@@ -27,6 +27,10 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
 
         tag(ModTags.Biomes.IS_WITHERED)
                 .addOptional(biomeId("withered_forest"));
+
+        tag(ModTags.Biomes.SIFT_HAS_VEGETATION)
+                .addTag(ModTags.Biomes.IS_SIFT)
+                .remove(ModTags.Biomes.IS_WITHERED);
     }
 
     private ResourceKey<Biome> biomeId(String name) {
