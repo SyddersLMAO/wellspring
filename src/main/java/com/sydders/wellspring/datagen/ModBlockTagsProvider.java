@@ -122,6 +122,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SUPPORTS_DRY_VEGETATION)
                 .add(ModBlocks.SIFT_STONE.get());
 
+        tag(BlockTags.CROPS)
+                .add(ModBlocks.OCA_CROP.get());
+
         tag(ModTags.Blocks.NEEDS_BAZULIUM_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
 

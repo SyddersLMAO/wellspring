@@ -1,13 +1,11 @@
 package com.sydders.wellspring.item;
 
 import com.sydders.wellspring.Wellspring;
+import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.entity.ModEntities;
+import com.sydders.wellspring.food.ModFoods;
 import com.sydders.wellspring.item.custom.WardenKeyItem;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -47,6 +45,9 @@ public class ModItems {
             properties -> new Item(properties.humanoidArmor(ModArmorMaterials.BAZULIUM_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
     public static final DeferredItem<Item> BAZULIUM_BOOTS = ITEMS.registerItem("bazulium_boots",
             properties -> new Item(properties.humanoidArmor(ModArmorMaterials.BAZULIUM_ARMOR_MATERIAL, ArmorType.BOOTS)));
+
+    public static final DeferredItem<Item> OCA = ITEMS.registerItem("oca",
+            properties -> new BlockItem(ModBlocks.OCA_CROP.get(), properties.food(ModFoods.OCA)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

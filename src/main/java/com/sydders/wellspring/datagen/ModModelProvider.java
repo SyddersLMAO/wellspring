@@ -2,6 +2,7 @@ package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.block.custom.OcaCropBlock;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
 import com.sydders.wellspring.item.ModArmorMaterials;
 import com.sydders.wellspring.item.ModItems;
@@ -165,5 +166,7 @@ public class ModModelProvider extends ModelProvider {
                         )
                 )
         );
+
+        blockModels.createCropBlock(ModBlocks.OCA_CROP.get(), OcaCropBlock.AGE, 0,1,2,3);
     }
 }

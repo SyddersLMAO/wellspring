@@ -15,6 +15,7 @@
   "item.wellspring.bazulium_chestplate":  "Bazulium Chestplate",
   "item.wellspring.bazulium_leggings":  "Bazulium Leggings",
   "item.wellspring.bazulium_boots":  "Bazulium Boots",
+  "item.wellspring.oca":  "Oca",
 
   "block.wellspring.red_sculk": "Red Sculk",
   "block.wellspring.sift_stone": "Sift Stone",
@@ -69,6 +70,7 @@
   "block.wellspring.hardened_bazulium_ore": "Hardened Bazulium Ore",
   "block.wellspring.bazulium_block": "Bazulium Block",
   "block.wellspring.croton": "Croton",
+  "block.wellspring.oca_crop": "Oca Crop",
 
   "biome.wellspring.sift_plains": "Sift Plains",
   "biome.wellspring.sift_forest": "Sift Forest",
