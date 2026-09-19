@@ -25,6 +25,7 @@ public class WellspringDatagen {
         generator.addProvider(true, new ModModelProvider(packOutput));
         generator.addProvider(true, new ModBlockTagsProvider(packOutput, lookupProvider));
         generator.addProvider(true, new ModBiomeTagsProvider(packOutput, lookupProvider));
+        generator.addProvider(true, new ModAdvancementsProvider(packOutput, lookupProvider));
         generator.addProvider(
                 true,
                 new LootTableProvider(

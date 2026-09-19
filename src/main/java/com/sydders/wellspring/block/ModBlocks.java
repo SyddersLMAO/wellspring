@@ -2,6 +2,7 @@ package com.sydders.wellspring.block;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.custom.ModFlammableRotatedPillarBlock;
+import com.sydders.wellspring.block.custom.OcaCropBlock;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
 import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.worldgen.tree.ModTreeGrowers;
@@ -268,6 +269,15 @@ public class ModBlocks {
         properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops()
                 .sound(SoundType.METAL).mapColor(MapColor.TERRACOTTA_PINK)));
 
+    public static final DeferredBlock<TallGrassBlock> CROTON = registerBlock("croton",
+            properties -> new TallGrassBlock(properties.instabreak().sound(SoundType.FLOWERING_AZALEA)
+                    .noCollision().offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final DeferredBlock<TallGrassBlock> WILD_OCA = registerBlock("wild_oca",
+            properties -> new TallGrassBlock(properties.instabreak().sound(SoundType.CROP)
+                    .noCollision().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final DeferredBlock<Block> OCA_CROP = BLOCKS.registerBlock("oca_crop",
+            properties -> new OcaCropBlock(properties.randomTicks().instabreak().sound(SoundType.CROP).noCollision().pushReaction(PushReaction.DESTROY)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);

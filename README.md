@@ -1,25 +1,10 @@
+![The wellspring logo](https://cdn.modrinth.com/data/cached_images/a3a89538ab5573500f7809176d3df9203a78a4d4.png)
 
-Installation information
-=======
+# What is wellspring?
+Wellspring is a mod that implements the Sift dimension from minecraft dungeons II. The Sift is not an exact replica of the one in the game, but an interpretation of what it could look like if added to the base minecraft game. You will adventure through biomes, dungeons, and caves fighting new bosses and creatures.
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+# How do i get to the Sift?
+To get to the Sift, you need to kill the warden (this will likely be changed in future versions) and it will drop you a key. Clear the vines from the central portal and right click the reinforced deepslate with the warden key and it will open a portal. I'd reccomending taking a note of where your portal is, you'll need it to get back home.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+---
+please note, this mod is in a very early alpha so it is very bare bones and many things are subject to change. Once minecraft dungeons II releases there will be a big rehaul to align the the mod more with the game.

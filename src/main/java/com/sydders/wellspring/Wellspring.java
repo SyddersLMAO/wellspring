@@ -140,6 +140,8 @@ public class Wellspring {
             event.accept(ModBlocks.BAZULIUM_ORE);
             event.accept(ModBlocks.HARDENED_BAZULIUM_ORE);
             event.accept(ModBlocks.BAZULIUM_BLOCK);
+
+            event.accept(ModBlocks.CROTON);
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
@@ -178,6 +180,10 @@ public class Wellspring {
             event.accept(ModItems.BAZULIUM_CHESTPLATE);
             event.accept(ModItems.BAZULIUM_LEGGINGS);
             event.accept(ModItems.BAZULIUM_BOOTS);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.OCA);
         }
     }
 

@@ -15,6 +15,7 @@
   "item.wellspring.bazulium_chestplate":  "Bazulium Chestplate",
   "item.wellspring.bazulium_leggings":  "Bazulium Leggings",
   "item.wellspring.bazulium_boots":  "Bazulium Boots",
+  "item.wellspring.oca":  "Oca",
 
   "block.wellspring.red_sculk": "Red Sculk",
   "block.wellspring.sift_stone": "Sift Stone",
@@ -68,6 +69,9 @@
   "block.wellspring.bazulium_ore": "Bazulium Ore",
   "block.wellspring.hardened_bazulium_ore": "Hardened Bazulium Ore",
   "block.wellspring.bazulium_block": "Bazulium Block",
+  "block.wellspring.croton": "Croton",
+  "block.wellspring.oca_crop": "Oca Crop",
+  "block.wellspring.wild_oca": "Wild Oca",
 
   "biome.wellspring.sift_plains": "Sift Plains",
   "biome.wellspring.sift_forest": "Sift Forest",
@@ -75,5 +79,10 @@
 
   "entity.wellspring.blub": "Blub",
 
-  "wellspring.music.ambition": "ZoharN - Ambition"
+  "wellspring.music.ambition": "ZoharN - Ambition",
+
+  "advancements.sift.root.title": "Sift",
+  "advancements.sift.root.description": "Enter the Sift dimension.",
+  "advancements.sift.sift_biomes.title": "Siftseeing",
+  "advancements.sift.sift_biomes.description": "Visit every biome in the Sift."
 }

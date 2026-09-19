@@ -39,6 +39,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BAZULIUM_ORE_KEY = registerKey("bazulium_ore");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> WITHER_ROSE_KEY = registerKey("wither_rose");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CROTON_KEY = registerKey("croton");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_OCA_KEY = registerKey("wild_oca");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIFT_GRASS_KEY = registerKey("sift_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SIFT_GRASS_KEY = registerKey("tall_sift_grass");
@@ -75,6 +77,20 @@ public class ModConfiguredFeatures {
                 new SimpleRandomFeatureConfiguration(
                         HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.WITHER_ROSE.defaultBlockState())),
+                                CountPlacement.of(32),
+                                RandomOffsetPlacement.ofTriangle(6, 3),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)))));
+        register(context, CROTON_KEY, Feature.SIMPLE_RANDOM_SELECTOR,
+                new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CROTON.get())),
+                                CountPlacement.of(32),
+                                RandomOffsetPlacement.ofTriangle(6, 3),
+                                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)))));
+        register(context, WILD_OCA_KEY, Feature.SIMPLE_RANDOM_SELECTOR,
+                new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_OCA.get())),
                                 CountPlacement.of(32),
                                 RandomOffsetPlacement.ofTriangle(6, 3),
                                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)))));

@@ -25,6 +25,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BAZULIUM_ORE = registerKey("add_bazulium_ore");
     public static final ResourceKey<BiomeModifier> ADD_WITHER_ROSE = registerKey("add_wither_rose");
     public static final ResourceKey<BiomeModifier> ADD_SIFT_GRASS = registerKey("add_sift_grass");
+    public static final ResourceKey<BiomeModifier> ADD_CROTON = registerKey("add_crotons");
+    public static final ResourceKey<BiomeModifier> ADD_WILD_OCA = registerKey("add_wild_oca");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -72,6 +74,14 @@ public class ModBiomeModifiers {
         context.register(ADD_WITHER_ROSE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.IS_WITHERED),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WITHER_ROSE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_CROTON, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(ModTags.Biomes.SIFT_HAS_VEGETATION),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.CROTON_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_WILD_OCA, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(ModTags.Biomes.SIFT_HAS_VEGETATION),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WILD_OCA_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(

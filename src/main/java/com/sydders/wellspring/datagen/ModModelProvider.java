@@ -2,6 +2,7 @@ package com.sydders.wellspring.datagen;
 
 import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
+import com.sydders.wellspring.block.custom.OcaCropBlock;
 import com.sydders.wellspring.block.custom.SiftPortalBlock;
 import com.sydders.wellspring.item.ModArmorMaterials;
 import com.sydders.wellspring.item.ModItems;
@@ -149,5 +150,50 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.HARDENED_BAZULIUM_ORE.get());
         blockModels.createTrivialCube(ModBlocks.BAZULIUM_BLOCK.get());
+
+        var crotonModel = BlockModelGenerators.plainModel(
+                ModelLocationUtils.getModelLocation(ModBlocks.CROTON.get())
+        );
+
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(
+                        ModBlocks.CROTON.get(),
+                        BlockModelGenerators.variants(
+                                crotonModel,
+                                BlockModelGenerators.Y_ROT_90.apply(crotonModel),
+                                BlockModelGenerators.Y_ROT_180.apply(crotonModel),
+                                BlockModelGenerators.Y_ROT_270.apply(crotonModel)
+                        )
+                )
+        );
+
+        var plantType = BlockModelGenerators.PlantType.NOT_TINTED;
+        var block = ModBlocks.WILD_OCA.get();
+
+        blockModels.registerSimpleItemModel(
+                block.asItem(),
+                plantType.createItemModel(blockModels, block)
+        );
+
+        var wildOcaModel = BlockModelGenerators.plainModel(
+                plantType.getCross().create(
+                        block,
+                        plantType.getTextureMapping(block),
+                        blockModels.modelOutput
+                )
+        );
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(
+                        ModBlocks.WILD_OCA.get(),
+                        BlockModelGenerators.variants(
+                                wildOcaModel,
+                                BlockModelGenerators.Y_ROT_90.apply(wildOcaModel),
+                                BlockModelGenerators.Y_ROT_180.apply(wildOcaModel),
+                                BlockModelGenerators.Y_ROT_270.apply(wildOcaModel)
+                        )
+                )
+        );
+
+        blockModels.createCropBlock(ModBlocks.OCA_CROP.get(), OcaCropBlock.AGE, 0,1,2,3);
     }
 }

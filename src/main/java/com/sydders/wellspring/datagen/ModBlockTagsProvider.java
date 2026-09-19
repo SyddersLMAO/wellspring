@@ -21,7 +21,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
                 .add(ModBlocks.SIFT_PLANKS_SLAB.get())
                 .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
-                .add(ModBlocks.SIFT_PLANKS_BUTTON.get());
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get())
+                .add(ModBlocks.WITHERED_STAIRS.get())
+                .add(ModBlocks.WITHERED_SLAB.get())
+                .add(ModBlocks.WITHERED_PRESSURE_PLATE.get())
+                .add(ModBlocks.WITHERED_BUTTON.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.SIFT_STONE.get())
@@ -111,6 +115,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_SIFT_SAPLING.get())
                 .add(ModBlocks.POTTED_WITHERED_SAPLING.get());
+
+        tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.CROTON.get());
+
+        tag(BlockTags.SUPPORTS_DRY_VEGETATION)
+                .add(ModBlocks.SIFT_STONE.get());
+
+        tag(BlockTags.CROPS)
+                .add(ModBlocks.OCA_CROP.get());
 
         tag(ModTags.Blocks.NEEDS_BAZULIUM_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
