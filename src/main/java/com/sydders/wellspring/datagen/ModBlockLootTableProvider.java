@@ -110,6 +110,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.BAZULIUM_BLOCK.get());
 
         dropSelf(ModBlocks.CROTON.get());
+        add(ModBlocks.WILD_OCA.get(),
+                createSilkTouchOrShearsDispatchTable(ModBlocks.WILD_OCA.get(),
+                        LootItem.lootTableItem(ModItems.OCA)));
 
         var isOcaMaxAge = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(ModBlocks.OCA_CROP.get())

@@ -272,6 +272,9 @@ public class ModBlocks {
     public static final DeferredBlock<TallGrassBlock> CROTON = registerBlock("croton",
             properties -> new TallGrassBlock(properties.instabreak().sound(SoundType.FLOWERING_AZALEA)
                     .noCollision().offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final DeferredBlock<TallGrassBlock> WILD_OCA = registerBlock("wild_oca",
+            properties -> new TallGrassBlock(properties.instabreak().sound(SoundType.CROP)
+                    .noCollision().offsetType(BlockBehaviour.OffsetType.XZ)));
 
     public static final DeferredBlock<Block> OCA_CROP = BLOCKS.registerBlock("oca_crop",
             properties -> new OcaCropBlock(properties.randomTicks().instabreak().sound(SoundType.CROP).noCollision().pushReaction(PushReaction.DESTROY)));

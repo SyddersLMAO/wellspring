@@ -167,6 +167,33 @@ public class ModModelProvider extends ModelProvider {
                 )
         );
 
+        var plantType = BlockModelGenerators.PlantType.NOT_TINTED;
+        var block = ModBlocks.WILD_OCA.get();
+
+        blockModels.registerSimpleItemModel(
+                block.asItem(),
+                plantType.createItemModel(blockModels, block)
+        );
+
+        var wildOcaModel = BlockModelGenerators.plainModel(
+                plantType.getCross().create(
+                        block,
+                        plantType.getTextureMapping(block),
+                        blockModels.modelOutput
+                )
+        );
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(
+                        ModBlocks.WILD_OCA.get(),
+                        BlockModelGenerators.variants(
+                                wildOcaModel,
+                                BlockModelGenerators.Y_ROT_90.apply(wildOcaModel),
+                                BlockModelGenerators.Y_ROT_180.apply(wildOcaModel),
+                                BlockModelGenerators.Y_ROT_270.apply(wildOcaModel)
+                        )
+                )
+        );
+
         blockModels.createCropBlock(ModBlocks.OCA_CROP.get(), OcaCropBlock.AGE, 0,1,2,3);
     }
 }
