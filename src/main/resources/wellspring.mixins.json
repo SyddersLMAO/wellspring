@@ -2,7 +2,9 @@
   "required": true,
   "package": "com.sydders.wellspring.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [],
+  "mixins": [
+    "LevelWeatherMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
