@@ -6,6 +6,7 @@ import com.sydders.wellspring.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -100,9 +101,39 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.SIFT_LEAVES.get());
+
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.SIFT_PLANKS.get())
                 .add(ModBlocks.WITHERED_PLANKS.get());
+
+        tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.SIFT_PLANKS_SLAB.get())
+                .add(ModBlocks.WITHERED_SLAB.get());
+
+        tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.get())
+                .add(ModBlocks.WITHERED_BUTTON.get());
+
+        tag(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.SIFT_PLANKS_DOOR.get())
+                .add(ModBlocks.WITHERED_DOOR.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.SIFT_PLANKS_FENCE.get())
+                .add(ModBlocks.WITHERED_FENCE.get());
+
+        tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.WITHERED_PRESSURE_PLATE.get());
+
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.SIFT_PLANKS_STAIRS.get())
+                .add(ModBlocks.WITHERED_STAIRS.get());
+
+        tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.SIFT_PLANKS_TRAPDOOR.get())
+                .add(ModBlocks.WITHERED_TRAPDOOR.get());
+
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.SIFT_LOG.get())
                 .add(ModBlocks.SIFT_WOOD.get())

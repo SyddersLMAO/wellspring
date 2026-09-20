@@ -19,7 +19,36 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         tag(ItemTags.PLANKS)
-                .add(ModBlocks.SIFT_PLANKS.asItem());
+                .add(ModBlocks.SIFT_PLANKS.asItem())
+                .add(ModBlocks.WITHERED_PLANKS.asItem());
+
+        tag(ItemTags.WOODEN_SLABS)
+                .add(ModBlocks.SIFT_PLANKS_SLAB.asItem())
+                .add(ModBlocks.WITHERED_SLAB.asItem());
+
+        tag(ItemTags.WOODEN_BUTTONS)
+                .add(ModBlocks.SIFT_PLANKS_BUTTON.asItem())
+                .add(ModBlocks.WITHERED_BUTTON.asItem());
+
+        tag(ItemTags.WOODEN_DOORS)
+                .add(ModBlocks.SIFT_PLANKS_DOOR.asItem())
+                .add(ModBlocks.WITHERED_DOOR.asItem());
+
+        tag(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.SIFT_PLANKS_FENCE.asItem())
+                .add(ModBlocks.WITHERED_FENCE.asItem());
+
+        tag(ItemTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.SIFT_PLANKS_PRESSURE_PLATE.asItem())
+                .add(ModBlocks.WITHERED_PRESSURE_PLATE.asItem());
+
+        tag(ItemTags.WOODEN_STAIRS)
+                .add(ModBlocks.SIFT_PLANKS_STAIRS.asItem())
+                .add(ModBlocks.WITHERED_STAIRS.asItem());
+
+        tag(ItemTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.SIFT_PLANKS_TRAPDOOR.asItem())
+                .add(ModBlocks.WITHERED_TRAPDOOR.asItem());
 
         tag(ItemTags.STONE_TOOL_MATERIALS)
                 .add(ModBlocks.SIFT_STONE.asItem())
