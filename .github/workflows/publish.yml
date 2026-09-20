@@ -35,6 +35,9 @@ jobs:
           echo "Publishing Wellspring $VERSION"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: Generate mod resources
+        run: ./gradlew runData
+
       - name: Build
         run: ./gradlew build
 
