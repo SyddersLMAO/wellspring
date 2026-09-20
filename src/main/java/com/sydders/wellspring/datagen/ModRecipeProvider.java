@@ -1,5 +1,6 @@
 package com.sydders.wellspring.datagen;
 
+import com.sydders.wellspring.Wellspring;
 import com.sydders.wellspring.block.ModBlocks;
 import com.sydders.wellspring.item.ModItems;
 import com.sydders.wellspring.tags.ModTags;
@@ -8,9 +9,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -156,6 +162,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.WITHERED_PLANKS.get()), has(ModBlocks.WITHERED_PLANKS))
                 .group("wooden_trapdoor").save(output);
 
+        List<ItemLike> BAZULIUM_SMELTABLES = List.of(ModItems.RAW_BAZULIUM,
+                ModBlocks.BAZULIUM_ORE, ModBlocks.HARDENED_BAZULIUM_ORE);
+
+        oreSmelting(BAZULIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.BAZULIUM_INGOT.get(), 0.25f, 200, "bazulium");
+        oreBlasting(BAZULIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.BAZULIUM_INGOT.get(), 0.25f, 100, "bazulium");
+
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAZULIUM_BLOCK.get())
                 .pattern("BBB")
                 .pattern("BBB")
@@ -250,5 +262,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
                 .save(output);
 
+    }
+
+    @Override
+    protected <T extends AbstractCookingRecipe> void oreCooking(AbstractCookingRecipe.Factory<T> factory, List<ItemLike> smeltables, RecipeCategory craftingCategory, CookingBookCategory cookingCategory, ItemLike result, float experience, int cookingTime, String group, String fromDesc) {
+        for(ItemLike item : smeltables) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(item), craftingCategory, cookingCategory, result, experience, cookingTime, factory).group(group).unlockedBy(getHasName(item), this.has(item))
+                    .save(output, Wellspring.MODID + ":" + getItemName(result) + fromDesc + "_" + getItemName(item));
+        }
     }
 }
